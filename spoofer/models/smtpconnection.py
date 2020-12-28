@@ -101,9 +101,8 @@ class SMTPConnection:
                 key = headers_list[i]
                 value = headers_list[i]
                 break
-            cout.info(f'Key = {key}')
-            cout.info(f'Value = {value}')
             message.add_header(_name=key, _value=value)
+
         body = MIMEText(html, 'html')
         message.attach(body)
         cout.info(f"Message generated : {message}")

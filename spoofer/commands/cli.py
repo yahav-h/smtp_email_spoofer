@@ -27,7 +27,6 @@ def run(args):
     if not args.headers:
         message_headers = None
     else:
-        print(args.headers)
         message_headers = args.headers
 
     # Compose MIME message
