@@ -1,6 +1,6 @@
 from colorama import Fore
 from getpass import getpass
-from ..utils import logger, appdescription
+from ..utils import logger as cout, appdescription
 from ..utils.userinput import prompt, get_required, get_optional, get_yes_no
 from ..models.smtpconnection import SMTPConnection
 
@@ -15,10 +15,10 @@ def run(args):
         try:
             port = int(get_required('SMTP port: '))
             if port < 0 or port > 65535:
-                logger.error('SMTP port is out-of-range (0-65535)')
+                cout.error('SMTP port is out-of-range (0-65535)')
                 port = None
         except ValueError:
-            logger.error('SMTP port must be a number')
+            cout.error('SMTP port must be a number')
             port = None
 
     # Connect to SMTP over TLS
@@ -32,7 +32,7 @@ def run(args):
                 get_required('Username: '),
                 getpass()
             )
-        logger.success('Authentication successful')
+        cout.success('Authentication successful')
 
     sender = get_required('Sender address: ')
     sender_name = get_required('Sender name: ')
@@ -52,21 +52,21 @@ def run(args):
         with open(filename) as f:
             html = f.read()
     else:
-        logger.info('Enter HTML line by line')
-        logger.info('To finish, press CTRL+D (*nix) or CTRL-Z (win) on an *empty* line')
+        cout.info('Enter HTML line by line')
+        cout.info('To finish, press CTRL+D (*nix) or CTRL-Z (win) on an *empty* line')
         while True:
             try:
                 line = prompt('>| ', Fore.LIGHTBLACK_EX)
                 html += line + '\n'
             except EOFError:
-                logger.success('Captured HTML body')
+                cout.success('Captured HTML body')
                 break
 
     if get_yes_no('Load message HEADERS (Y/N)?: ', 'n'):
         message_headers = get_optional('Message HEADERS: ', None)
     else:
-        logger.info('Message HEADERS not laded')
-        pass
+        cout.info('Message HEADERS not laded')
+        message_headers = None
 
     # Compose MIME message
     message = connection.compose_message(
