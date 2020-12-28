@@ -1,10 +1,14 @@
 import smtplib
 from socket import gaierror
 from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
 from email.mime.text import MIMEText
+from email.utils import COMMASPACE, formatdate
 from spoofer.utils import logger as cout
 from uuid import NAMESPACE_X500, uuid5
 from time import time
+from os.path import basename
+from ..utils.config import Config
 
 stamp = lambda: time().__str__()[:10]
 
@@ -82,15 +86,18 @@ class SMTPConnection:
             cout.error('Encountered an error during authentication.')
             exit(1)
 
-    def compose_message(self, sender, name, recipients, subject, html, headers):
+    def compose_message(self, sender, name, recipients, subject, html, headers, attachments):
         self.sender = sender
         self.recipients = recipients
+        assert isinstance(self.recipients, list)
+        assert isinstance(attachments, list)
 
         message = MIMEMultipart('alternative')
         message.set_charset("utf-8")
         message["From"] = f'{name} <{self.sender}>'
         message['Subject'] = f"{uuid5(NAMESPACE_X500, stamp())} - {subject}"
-        message["To"] = ', '.join(self.recipients)
+        message['Date'] = formatdate(localtime=True)
+        message["To"] = COMMASPACE.join(self.recipients)
 
         if not headers:
             pass
@@ -105,14 +112,16 @@ class SMTPConnection:
 
         body = MIMEText(html, 'html')
         message.attach(body)
-        cout.info(f"Message generated : {message}")
-        cout.info(f"Original Sender : {self.username}")
-        cout.info(f"Spoofed Sender : {message['From']}")
-        cout.info(f"Recipient[s] : {message['To']}")
-        cout.info(f"Subject : {message['Subject']}")
-        cout.info(f"Headers : {headers}")
-        cout.info(f"Attachments : {message.get_filename()}")
-        cout.info(f"HTML : {html}")
+        if attachments:
+            for attch in attachments:
+                fil = open(f'{Config.get_attachments()}/{attch}', "rb")
+                part = MIMEApplication(fil.read(), Name=basename(attch))
+                # After the file is closed
+                part['Content-Disposition'] = 'attachment; filename="%s"' % basename(attch)
+                message.attach(part)
+        else:
+            pass
+        cout.info(f":: Message generated ::\n{message}")
         return message
 
     def send_mail(self, message):

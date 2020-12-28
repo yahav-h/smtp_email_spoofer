@@ -1,6 +1,7 @@
 from spoofer.utils import logger, appdescription
 from ..models.smtpconnection import SMTPConnection
 from ..utils.userinput import get_yes_no
+from ..utils.config import Config
 
 
 def run(args):
@@ -18,7 +19,7 @@ def run(args):
             exit(1)
 
     try:
-        with open(args.filename) as f:
+        with open(f'{Config.get_templates()}/{args.filename}') as f:
             message_body = f.read()
     except FileNotFoundError:
         logger.error("No such file: " + args.filename)
@@ -29,6 +30,11 @@ def run(args):
     else:
         message_headers = args.headers
 
+    if not args.attachments:
+        attachments = None
+    else:
+        attachments = [args.attachments]
+
     # Compose MIME message
     message = connection.compose_message(
         args.sender,
@@ -36,7 +42,8 @@ def run(args):
         args.recipients,
         args.subject,
         message_body,
-        message_headers
+        message_headers,
+        attachments
     )
 
     if get_yes_no('Send message (Y/N)?: ', None):

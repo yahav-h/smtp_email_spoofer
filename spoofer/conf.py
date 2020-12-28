@@ -31,3 +31,4 @@ required.add_argument('--recipients', dest='recipients', required=True, type=str
 required.add_argument('--subject', dest='subject', required=True, type=str, help='Subject line')
 required.add_argument('--filename', dest='filename', required=True, type=str, help='Message body filename (e.g. clean.html)')
 required.add_argument('--headers', dest='headers', required=True, type=str, help='Message headers (e.g. "{\'MY-HEADER\':\'MY-VALUE\'}")')
+required.add_argument('--attachments', dest='attachments', required=False, type=str, help='Message attachments (e.g. macro_ex.xlsx)')

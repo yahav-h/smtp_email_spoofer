@@ -2,6 +2,7 @@ from colorama import Fore
 from getpass import getpass
 from ..utils import logger as cout, appdescription
 from ..utils.userinput import prompt, get_required, get_optional, get_yes_no
+from ..utils.config import Config
 from ..models.smtpconnection import SMTPConnection
 
 
@@ -51,7 +52,7 @@ def run(args):
     html = ''
     if get_yes_no('Load message body from file (Y/N)?: ', 'n'):
         filename = get_required('Filename: ')
-        with open(filename) as f:
+        with open(f'{Config.get_templates()}/{filename}') as f:
             html = f.read()
     else:
         cout.info('Enter HTML line by line')
@@ -70,6 +71,12 @@ def run(args):
         cout.info('Message HEADERS not laded')
         message_headers = None
 
+    if get_yes_no('Load message Attachment (Y/N)?: ',  'n'):
+        attachments = [get_optional('Message Attachments:', None)]
+    else:
+        cout.info('Message Attachments not loaded')
+        attachments = None
+
     # Compose MIME message
     message = connection.compose_message(
         sender,
@@ -77,7 +84,8 @@ def run(args):
         recipients,
         subject,
         html,
-        message_headers
+        message_headers,
+        attachments
     )
 
     if get_yes_no('Send message (Y/N)?: ', None):
