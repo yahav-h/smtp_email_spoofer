@@ -51,20 +51,15 @@ Issue the `wizard` command to use the step-by-step wizard:
 $ py spoof.py wizard
 ```
 
-1. Enter the SMTP server information to establish a connection over TLS:
+1. Enter the SMTP server information to establish a connection over TLS - you'll need to enter the HOST and PORT
 
+2. Optionally provide credentials to login to the SMTP server - use email credentials
 
-2. Optionally provide credentials to login to the SMTP server:
-
-
-3. Compose the forged message:
+3. Compose the forged message - either select a template like `exmaple.html` / `phishing_ex.html` or create your own from the shell.
 
 > Load the HTML message body from a file, or compose it within the shell
 
-
-4. Send the message:
-
-
+4. Send the message
 
 ----
 
@@ -94,16 +89,9 @@ required arguments:
                         Recipient addresses (e.g. victim@domain.com ...)
   --subject SUBJECT     Subject line
   --filename FILENAME   Message body filename (e.g. example.html)
+  --headers HEADERS     Message headers (e.g. '{"MY-HEADER : MY-VALUE"}')
 ```
 
 1. Issue the `cli` command along with the appropriate arguments:
 
 > If `--noauth` is not specified, `--username` and `--password` are required.
-
-
-
-----
-
-## Result
-
-
