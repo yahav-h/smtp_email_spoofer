@@ -2,6 +2,7 @@ from colorama import init, Fore, Style
 
 init()
 
+
 def header(line):
     print(Fore.LIGHTBLACK_EX + line + Style.RESET_ALL)
 
