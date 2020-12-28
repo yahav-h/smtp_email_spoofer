@@ -17,7 +17,7 @@ Python 3.x based email spoofer
 
 ## <a id="getting-started">Getting Started</a>
 
-1. `$ git clone `
+1. `$ git clone https://github.com/yahav-h/smtp_email_spoofer.git`
 3. Activate `virtualenv`
 2. `$ pip install -r requirements.txt`
 3. `$ python spoof.py`
