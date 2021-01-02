@@ -45,13 +45,14 @@ def run(args):
             if recipient:
                 recipients.append(recipient)
             else:
+                cout.info(f'Recipient[s] are {recipients}')
                 break
 
     subject = get_required('Subject line: ')
 
     html = ''
-    if get_yes_no('Load message body from file (Y/N)?: ', 'n'):
-        filename = get_required('Filename: ')
+    if get_yes_no('Load message body template (Y/N)?: ', 'n'):
+        filename = get_required('Body template: ')
         with open(f'{Config.get_templates()}/{filename}') as f:
             html = f.read()
     else:
@@ -68,14 +69,22 @@ def run(args):
     if get_yes_no('Load message HEADERS (Y/N)?: ', 'n'):
         message_headers = get_optional('Message HEADERS: ', None)
     else:
-        cout.info('Message HEADERS not laded')
+        cout.info('Message HEADERS not loaded')
         message_headers = None
 
     if get_yes_no('Load message Attachment (Y/N)?: ',  'n'):
-        attachments = [get_optional('Message Attachments:', None)]
+        attachments = [get_optional('Message Attachments: ', None)]
+        if get_yes_no('Load another attachment to message (Y/N)?: ', 'n'):
+            while attachments:
+                attachment = get_optional('Load Message Attachments: ', None)
+                if attachment:
+                    attachments.append(attachment)
+                else:
+                    break
+        else:
+            cout.info(f'Attachment[s] are {attachments}')
     else:
-        cout.info('Message Attachments not loaded')
-        attachments = None
+        attachments = [None]
 
     # Compose MIME message
     message = connection.compose_message(

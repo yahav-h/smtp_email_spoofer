@@ -31,7 +31,7 @@ def run(args):
         message_headers = args.headers
 
     if not args.attachments:
-        attachments = None
+        attachments = [None]
     else:
         attachments = [args.attachments]
 

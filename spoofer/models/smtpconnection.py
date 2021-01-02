@@ -21,6 +21,7 @@ class SMTPConnection:
         self.server = None
         self.sender = None
         self.recipients = None
+        self.attachments = None
         self.username = None
 
         self.__connect()
@@ -89,6 +90,7 @@ class SMTPConnection:
     def compose_message(self, sender, name, recipients, subject, html, headers, attachments):
         self.sender = sender
         self.recipients = recipients
+        self.attachments = attachments
         assert isinstance(self.recipients, list)
         assert isinstance(attachments, list)
 
@@ -112,15 +114,15 @@ class SMTPConnection:
 
         body = MIMEText(html, 'html')
         message.attach(body)
-        if attachments:
-            for attch in attachments:
+        if None in self.attachments:
+            pass
+        else:
+            for attch in self.attachments:
                 fil = open(f'{Config.get_attachments()}/{attch}', "rb")
                 part = MIMEApplication(fil.read(), Name=basename(attch))
                 # After the file is closed
                 part['Content-Disposition'] = 'attachment; filename="%s"' % basename(attch)
                 message.attach(part)
-        else:
-            pass
         cout.info(f":: Message generated ::\n{message}")
         return message
 
