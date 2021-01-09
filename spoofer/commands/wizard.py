@@ -3,10 +3,12 @@ from getpass import getpass
 from ..utils import logger as cout, appdescription
 from ..utils.userinput import prompt, get_required, get_optional, get_yes_no
 from ..utils.config import Config
+from ..utils.lambdas import clearConsole
 from ..models.smtpconnection import SMTPConnection
 
 
 def run(args):
+    clearConsole()
     appdescription.print_description()
 
     host = get_required('SMTP host: ')

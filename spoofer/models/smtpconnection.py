@@ -5,12 +5,9 @@ from email.mime.application import MIMEApplication
 from email.mime.text import MIMEText
 from email.utils import COMMASPACE, formatdate
 from spoofer.utils import logger as cout
-from uuid import NAMESPACE_X500, uuid5
-from time import time
 from os.path import basename
 from ..utils.config import Config
-
-stamp = lambda: time().__str__()[:10]
+from ..utils.lambdas import getUUID
 
 
 class SMTPConnection:
@@ -34,16 +31,20 @@ class SMTPConnection:
             if not self.server.does_esmtp:
                 cout.error('The server does not support ESMTP')
                 exit(1)
-        except smtplib.SMTPHeloError:
+        except smtplib.SMTPHeloError as e:
             cout.error('The server did not reply properly to the EHLO/HELO greeting.')
+            cout.error(':Error Cause:')
+            cout.error(f'{e.with_traceback(e.__traceback__)}')
             exit(1)
 
     def __connect(self):
         try:
             cout.info('Connecting to SMTP socket (' + self.socket + ')...')
             self.server = smtplib.SMTP(self.host, self.port)
-        except (gaierror, OSError):
+        except (gaierror, OSError) as e:
             cout.error('Unable to establish connection to SMTP socket.')
+            cout.error(':Error Cause:')
+            cout.error(f'{e.with_traceback(e.__traceback__)}')
             exit(1)
 
     def __start_tls(self):
@@ -55,8 +56,10 @@ class SMTPConnection:
             try:
                 cout.info('Starting TLS session...')
                 self.server.starttls()
-            except RuntimeError:
+            except RuntimeError as e:
                 cout.error('SSL/TLS support is not available to your Python interpreter.')
+                cout.error(':Error Cause:')
+                cout.error(f'{e.with_traceback(e.__traceback__)}')
                 exit(1)
 
     def __eval_server_features(self):
@@ -77,14 +80,20 @@ class SMTPConnection:
         try:
             self.username = username
             return self.server.login(self.username, password)
-        except smtplib.SMTPAuthenticationError:
+        except smtplib.SMTPAuthenticationError as e:
             cout.error('The server did not accept the username/password combination.')
+            cout.error(':Error Cause:')
+            cout.error(f'{e.with_traceback(e.__traceback__)}')
             return False
-        except smtplib.SMTPNotSupportedError:
+        except smtplib.SMTPNotSupportedError as e:
             cout.error('The AUTH command is not supported by the server.')
+            cout.error(':Error Cause:')
+            cout.error(f'{e.with_traceback(e.__traceback__)}')
             exit(1)
-        except smtplib.SMTPException:
+        except smtplib.SMTPException as e:
             cout.error('Encountered an error during authentication.')
+            cout.error(':Error Cause:')
+            cout.error(f'{e.with_traceback(e.__traceback__)}')
             exit(1)
 
     def compose_message(self, sender, name, recipients, subject, html, headers, attachments):
@@ -97,8 +106,8 @@ class SMTPConnection:
         message = MIMEMultipart('alternative')
         message.set_charset("utf-8")
         message["From"] = f'{name} <{self.sender}>'
-        message['Subject'] = f"{uuid5(NAMESPACE_X500, stamp())} - {subject}"
-        message['Date'] = formatdate(localtime=True)
+        message['Subject'] = f"{getUUID()} - {subject}"
+        message['Date'] = formatdate(localtime=True, usegmt=True, timeval=0.750)
         message["To"] = COMMASPACE.join(self.recipients)
 
         if not headers:
@@ -131,6 +140,8 @@ class SMTPConnection:
             cout.info('Sending spoofed message...')
             self.server.sendmail(self.sender, self.recipients, message.as_string())
             cout.success('Message sent!')
-        except smtplib.SMTPException:
+        except smtplib.SMTPException as e:
             cout.error('Unable to send message. Check sender, recipients and message body')
+            cout.error(':Error Cause:')
+            cout.error(f'{e.with_traceback(e.__traceback__)}')
             exit(1)
