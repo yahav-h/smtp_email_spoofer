@@ -109,6 +109,7 @@ class SMTPConnection:
         message['Subject'] = f"{getUUID()} - {subject}"
         message['Date'] = formatdate(localtime=True, usegmt=True, timeval=0.750)
         message["To"] = COMMASPACE.join(self.recipients)
+        message.add_header('Reply-To', self.sender)
 
         if not headers:
             pass
