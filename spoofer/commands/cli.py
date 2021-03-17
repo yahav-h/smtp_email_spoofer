@@ -20,7 +20,11 @@ def run(args):
 
     try:
         with open(f'{Config.get_templates()}/{args.filename}') as f:
-            message_body = f.read()
+            data = f.read()
+            if '{{userName}}' in data:
+                email = args.recipients[0]
+                data = data.replace('{{userName}}', email)
+            message_body = data
     except FileNotFoundError:
         logger.error("No such file: " + args.filename)
         exit(1)
