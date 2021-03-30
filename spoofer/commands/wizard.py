@@ -11,6 +11,8 @@ def run(args):
     clearConsole()
     appdescription.print_description()
 
+    args.uuid = True if args.uuid == 1 else False
+
     host = get_required('SMTP host: ')
     port = None
 
@@ -96,7 +98,8 @@ def run(args):
         subject,
         html,
         message_headers,
-        attachments
+        attachments,
+        withUUID=args.uuid
     )
 
     if get_yes_no('Send message (Y/N)?: ', None):

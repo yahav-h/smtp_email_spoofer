@@ -7,6 +7,8 @@ from ..utils.config import Config
 def run(args):
     appdescription.print_description()
 
+    args.uuid = True if args.uuid == 1 else False
+
     # Connect to SMTP over TLS
     connection = SMTPConnection(args.host, str(args.port))
 
@@ -47,7 +49,8 @@ def run(args):
         args.subject,
         message_body,
         message_headers,
-        attachments
+        attachments,
+        withUUID=args.uuid
     )
 
     if get_yes_no('Send message (Y/N)?: ', None):
