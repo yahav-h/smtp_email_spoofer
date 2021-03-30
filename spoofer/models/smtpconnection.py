@@ -96,7 +96,7 @@ class SMTPConnection:
             cout.error(f'{e.with_traceback(e.__traceback__)}')
             exit(1)
 
-    def compose_message(self, sender, name, recipients, subject, html, headers, attachments):
+    def compose_message(self, sender, name, recipients, subject, html, headers, attachments, withUUID):
         self.sender = sender
         self.recipients = recipients
         self.attachments = attachments
@@ -106,7 +106,7 @@ class SMTPConnection:
         message = MIMEMultipart('alternative')
         message.set_charset("utf-8")
         message["From"] = f'{name} <{self.sender}>'
-        message['Subject'] = f"{getUUID()} - {subject}"
+        message['Subject'] = f"{getUUID()} - {subject}" if withUUID else f"{subject}"
         message['Date'] = formatdate(localtime=True, usegmt=True, timeval=0.750)
         message["To"] = COMMASPACE.join(self.recipients)
         message.add_header('Reply-To', self.sender)
