@@ -11,7 +11,6 @@ def run(args):
     clearConsole()
     appdescription.print_description()
 
-    args.uuid = True if args.uuid == 1 else False
 
     host = get_required('SMTP host: ')
     port = None
@@ -53,6 +52,11 @@ def run(args):
                 break
 
     subject = get_required('Subject line: ')
+
+    # Add Unique UUID to Subject
+    unique_uuid = False
+    if get_yes_no('Add UUID to Subject (Y/N)?: ',  'n'):
+        unique_uuid = True
 
     html = ''
     if get_yes_no('Load message body template (Y/N)?: ', 'n'):
@@ -99,7 +103,7 @@ def run(args):
         html,
         message_headers,
         attachments,
-        withUUID=args.uuid
+        withUUID=unique_uuid
     )
 
     if get_yes_no('Send message (Y/N)?: ', None):
