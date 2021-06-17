@@ -116,7 +116,6 @@ class SMTPConnection:
             message['To'] = one
             message['Cc'] = ', '.join(n)
         else:
-            print(self.recipients)
             message['To'] = ', '.join(self.recipients)
         message['Message-ID'] = uuid.hex
         message['timestamp'] = str(time.time())
