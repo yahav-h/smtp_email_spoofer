@@ -9,4 +9,4 @@ __CLR__ = 'clear'
 stamp = lambda: time().__str__()[:10]
 isWin = lambda: True if platform().lower().startswith(__WIN__) else False
 clearConsole = lambda: system(__CLS__) if isWin() else system(__CLR__)
-getUUID = lambda: uuid5(NAMESPACE_X500, stamp()).__str__()
+getUUID = lambda: uuid5(NAMESPACE_X500, stamp())

@@ -1,4 +1,6 @@
 import smtplib
+import time
+import datetime
 from socket import gaierror
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
@@ -96,19 +98,29 @@ class SMTPConnection:
             cout.error(f'{e.with_traceback(e.__traceback__)}')
             exit(1)
 
-    def compose_message(self, sender, name, recipients, subject, html, headers, attachments, withUUID):
+    def compose_message(self, sender, name, recipients, subject, html, headers, attachments, withUUID, isCC):
         self.sender = sender
         self.recipients = recipients
+        print("List : %s" % self.recipients)
         self.attachments = attachments
         assert isinstance(self.recipients, list)
         assert isinstance(attachments, list)
-
+        uuid = getUUID()
         message = MIMEMultipart('alternative')
         message.set_charset("utf-8")
-        message["From"] = f'{name} <{self.sender}>'
-        message['Subject'] = f"{getUUID()} - {subject}" if withUUID else f"{subject}"
-        message['Date'] = formatdate(localtime=True, usegmt=True, timeval=0.750)
-        message["To"] = COMMASPACE.join(self.recipients)
+        message['From'] = f'{name} <{self.sender}>'
+        message['Subject'] = f"{uuid.hex} - {subject}" if withUUID else f"{subject}"
+        # message['Date'] = formatdate(localtime=True, usegmt=True, timeval=0.750)
+        if len(self.recipients) > 1 and isCC:
+            one, *n = self.recipients
+            message['To'] = one
+            message['Cc'] = ', '.join(n)
+        else:
+            print(self.recipients)
+            message['To'] = ', '.join(self.recipients)
+        message['Message-ID'] = uuid.hex
+        message['timestamp'] = str(time.time())
+        message['Date'] = datetime.datetime.utcnow().isoformat()
         message.add_header('Reply-To', self.sender)
 
         if not headers:

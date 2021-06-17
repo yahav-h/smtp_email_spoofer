@@ -11,7 +11,6 @@ def run(args):
     clearConsole()
     appdescription.print_description()
 
-
     host = get_required('SMTP host: ')
     port = None
 
@@ -58,11 +57,16 @@ def run(args):
     if get_yes_no('Add UUID to Subject (Y/N)?: ',  'n'):
         unique_uuid = True
 
+    isCC = False
+    if get_yes_no('Split to CC (Y/N)?: ', 'n'):
+        isCC = True
+
     html = ''
     if get_yes_no('Load message body template (Y/N)?: ', 'n'):
         filename = get_required('Body template: ')
         with open(f'{Config.get_templates()}/{filename}') as f:
-            html = f.read()
+            html = f.read().replace('{{userName}}', recipients[0])
+
     else:
         cout.info('Enter HTML line by line')
         cout.info('To finish, press CTRL+D (*nix) or CTRL-Z (win) on an *empty* line')
@@ -103,7 +107,8 @@ def run(args):
         html,
         message_headers,
         attachments,
-        withUUID=unique_uuid
+        withUUID=unique_uuid,
+        isCC=isCC
     )
 
     if get_yes_no('Send message (Y/N)?: ', None):

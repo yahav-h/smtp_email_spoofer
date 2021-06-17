@@ -20,11 +20,13 @@ def run(args):
         else:
             exit(1)
 
+
+    recipients = args.recipients[0].split(',')
     try:
         with open(f'{Config.get_templates()}/{args.filename}') as f:
             data = f.read()
             if '{{userName}}' in data:
-                email = args.recipients[0]
+                email = recipients[0]
                 data = data.replace('{{userName}}', email)
             message_body = data
     except FileNotFoundError:
@@ -45,12 +47,13 @@ def run(args):
     message = connection.compose_message(
         args.sender,
         args.name,
-        args.recipients,
+        recipients,
         args.subject,
         message_body,
         message_headers,
         attachments,
-        withUUID=args.uuid
+        withUUID=args.uuid,
+        isCC=args.cc
     )
 
     if get_yes_no('Send message (Y/N)?: ', None):

@@ -28,6 +28,7 @@ required.add_argument('--port', dest='port', type=int, required=True, help='SMTP
 required.add_argument('--sender', dest='sender', required=True, type=str, help='Sender address (e.g. spoofed@domain.com)')
 required.add_argument('--name', dest='name', required=True, type=str, help='Sender name (e.g. John Smith)')
 required.add_argument('--recipients', dest='recipients', required=True, type=str, nargs='+', help='Recipient addresses (e.g. victim@domain.com ...)')
+required.add_argument('--cc', dest='cc', required=False, type=int, nargs='+', help='Split multiple recipients to CC')
 required.add_argument('--subject', dest='subject', required=True, type=str, help='Subject line')
 required.add_argument('--filename', dest='filename', required=True, type=str, help='Message body filename (e.g. clean.html)')
 required.add_argument('--headers', dest='headers', required=True, type=str, help='Message headers (e.g. "{\'MY-HEADER\':\'MY-VALUE\'}")')
