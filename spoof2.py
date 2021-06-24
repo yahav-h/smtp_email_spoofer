@@ -7,7 +7,7 @@ global sender, counter, collected_ids
 sender = {}
 counter = 0
 collected_ids = []
-SUBJECT = "Yahav mail 666 "
+SUBJECT = "Yahav mail "
 
 
 def main():
@@ -69,4 +69,6 @@ class Data(object):
 
 
 if __name__ == '__main__':
+    import pprint
     main()
+    pprint.pprint(collected_ids)
