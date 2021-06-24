@@ -1,0 +1,30 @@
+{
+  "senders": [
+    {
+      "inbox": "jhonmichaels.the3rd@gmail.com",
+      "pwd": "Aa1029384756aA"
+    },
+    {
+      "inbox": "sender1.testmail@gmail.com",
+      "pwd": "Aa1234567890aA"
+    },
+    {
+      "inbox": "sender2.testmail@gmail.com",
+      "pwd": "Aa1234567890aA"
+    },
+    {
+      "inbox": "sender3.testmail@gmail.com",
+      "pwd": "Aa1234567890aA"
+    }
+  ],
+  "recipients": [
+    "split_monitor@avananlab18.onmicrosoft.com"
+  ],
+  "body": "phishing_ex_it.html",
+  "max": 200,
+  "attachments": [],
+  "host": "smtp.gmail.com",
+  "port": 587,
+  "email": "",
+  "pwd": ""
+}

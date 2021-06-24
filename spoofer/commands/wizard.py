@@ -5,6 +5,7 @@ from ..utils.userinput import prompt, get_required, get_optional, get_yes_no
 from ..utils.config import Config
 from ..utils.lambdas import clearConsole
 from ..models.smtpconnection import SMTPConnection
+from concurrent.futures import FIRST_EXCEPTION, wait, ThreadPoolExecutor
 
 
 def run(args):
@@ -111,5 +112,14 @@ def run(args):
         isCC=isCC
     )
 
+    if get_yes_no("Mass Send (Y/N)?: ", 'n'):
+        mass_send = int(get_required("Mass Send Number: "))
+    else:
+        mass_send = 1
+
     if get_yes_no('Send message (Y/N)?: ', None):
-        connection.send_mail(message)
+        for i in range(0, mass_send):
+            message['Subject'] = message['Subject'] + f" {i + 1}"
+            connection.send_mail(message)
+            cout.info(f"expect: {message['Subject']}")
+        cout.success("Done!")

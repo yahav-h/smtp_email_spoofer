@@ -20,6 +20,10 @@ def run(args):
         else:
             exit(1)
 
+    if not args.mass_send:
+        mass_send = 1
+    else:
+        mass_send = args.mass_send
 
     recipients = args.recipients[0].split(',')
     try:
@@ -57,5 +61,7 @@ def run(args):
     )
 
     if get_yes_no('Send message (Y/N)?: ', None):
-        connection.send_mail(message)
+        for i in range(0, mass_send):
+            message['Subject'] = message['Subject'] + f" {i + 1}"
+            connection.send_mail(message)
 

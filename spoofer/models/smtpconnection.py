@@ -16,7 +16,7 @@ class SMTPConnection:
     def __init__(self, host, port):
         self.host = host
         self.port = port
-        self.socket = host + ':' + port
+        self.socket = str(host) + ':' + str(port)
         self.server = None
         self.sender = None
         self.recipients = None
@@ -101,10 +101,10 @@ class SMTPConnection:
     def compose_message(self, sender, name, recipients, subject, html, headers, attachments, withUUID, isCC):
         self.sender = sender
         self.recipients = recipients
-        print("List : %s" % self.recipients)
+        # print("List : %s" % self.recipients)
         self.attachments = attachments
         assert isinstance(self.recipients, list)
-        assert isinstance(attachments, list)
+        assert isinstance(self.attachments, list)
         uuid = getUUID()
         message = MIMEMultipart('alternative')
         message.set_charset("utf-8")
@@ -144,16 +144,23 @@ class SMTPConnection:
                 # After the file is closed
                 part['Content-Disposition'] = 'attachment; filename="%s"' % basename(attch)
                 message.attach(part)
-        cout.info(f":: Message generated ::\n{message}")
+        # cout.info(f":: Message generated ::\n{message}")
         return message
 
     def send_mail(self, message):
         try:
-            cout.info('Sending spoofed message...')
+            # cout.info('Sending spoofed message...')
             self.server.sendmail(self.sender, self.recipients, message.as_string())
             cout.success('Message sent!')
         except smtplib.SMTPException as e:
             cout.error('Unable to send message. Check sender, recipients and message body')
             cout.error(':Error Cause:')
             cout.error(f'{e.with_traceback(e.__traceback__)}')
+            exit(1)
+
+    def quit(self):
+        try:
+            self.server.quit()
+        except Exception as e:
+            cout.error(e)
             exit(1)
