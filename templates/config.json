@@ -15,14 +15,19 @@
     {
       "inbox": "sender3.testmail@gmail.com",
       "pwd": "Aa1234567890aA"
+    },
+    {
+      "inbox": "ls_user@glab2.avanan.net",
+      "pwd": "Aa1029384756"
     }
   ],
   "recipients": [
     "split_monitor@avananlab18.onmicrosoft.com"
   ],
-  "body": "phishing_ex_it.html",
-  "max": 200,
-  "attachments": [],
+  "subject": "Test Clean+Malw",
+  "body": "clean.html",
+  "max": 300,
+  "attachments": [".dat", "avanan_malicious_1.pdf"],
   "host": "smtp.gmail.com",
   "port": 587,
   "email": "",

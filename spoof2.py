@@ -3,53 +3,8 @@ from spoofer.models.smtpconnection import SMTPConnection, cout
 import json
 
 
-global sender, counter, collected_ids
-sender = {}
-counter = 0
+global collected_ids
 collected_ids = []
-SUBJECT = "Yahav mail "
-
-
-def main():
-    global collected_ids, sender
-    data = Data()
-
-    with open(f"{Config.get_templates()}/{data.body}", "r") as fin:
-        html = fin.read()
-        html = html.replace("{{userName}}", ", ".join(data.recipients))
-
-    for s in data.senders:
-        cout.info(f"sender is {s['inbox']} . . . ")
-        sender = s
-        try:
-            for i in range(data.max):
-                send(data, html)
-        except:
-            continue
-
-
-def send(data, html):
-    global collected_ids
-    conn: SMTPConnection = SMTPConnection(data.host, data.port)
-    email, pwd = sender['inbox'], sender['pwd']
-    conn.login(email, pwd)
-    msg = conn.compose_message(
-        sender=email,
-        name=email.split('@')[0],
-        recipients=data.recipients,
-        subject=SUBJECT,
-        html=html,
-        headers='',
-        attachments=data.attachments,
-        withUUID=0,
-        isCC=0
-    )
-    hex_id = msg['Message-ID']
-    msg['Subject'] = msg['Subject'] + str(hex_id)
-    conn.send_mail(msg)
-    cout.info(f"Sent from {email} to {msg['To']}")
-    conn.quit()
-    collected_ids.append(hex_id)
 
 
 class Data(object):
@@ -68,7 +23,72 @@ class Data(object):
         return '<Data %r>' % self.__dict__
 
 
+class Sender(object):
+    email = None
+    pwd = None
+
+    def __init__(self, email, pwd):
+        self.email = email
+        self.pwd = pwd
+
+
+def threaded_main():
+    global collected_ids
+    data = Data()
+    all_senders = data.senders
+    senders = []
+    for s in all_senders:
+        senders.append(Sender(s['inbox'], s['pwd']))
+
+    def thread(sender, data):
+        global collected_ids
+        counter = 0
+        with open(f'{Config.get_templates()}/{data.body}', 'r') as fin:
+            html = fin.read()
+            html.replace('{{userName}}', ', '.join(data.recipients))
+        while counter < data.max:
+            conn = SMTPConnection(data.host, data.port)
+            conn.login(sender.email, sender.pwd)
+            msg = conn.compose_message(
+                sender=sender.email,
+                name=sender.email.split('@')[0],
+                recipients=data.recipients,
+                subject=data.subject,
+                html=html,
+                headers='',
+                attachments=data.attachments,
+                withUUID=0,
+                isCC=0
+            )
+            hex_id = msg['Message-ID']
+            msg['Subject'] = msg['Subject'] + str(hex_id)
+            conn.send_mail(msg)
+            cout.success(f'Sender {sender.email} sent message {hex_id} to {", ".join(data.recipients)}')
+            conn.quit()
+            collected_ids.append(hex_id)
+            counter += 1
+
+    from concurrent.futures import ThreadPoolExecutor, FIRST_EXCEPTION, wait
+    with ThreadPoolExecutor(max_workers=len(senders)) as execs:
+        fs = []
+        futures = []
+        results = []
+        for sender in senders:
+            fs.append(execs.submit(thread, sender, data))
+        states = []
+        for f in fs:
+            states.append(wait(fs=[f], timeout=666, return_when=FIRST_EXCEPTION))
+        if all([state.done for state in states]):
+            futures = [s.done.pop() for s in states]
+            if all([f._state == 'FINISHED' for f in futures]):
+                results = [f.result() for f in futures]
+                cout.success(results)
+            cout.success("Done sending emails")
+        else:
+            cout.error("not Done")
+    from pprint import pprint
+    pprint(collected_ids)
+
+
 if __name__ == '__main__':
-    import pprint
-    main()
-    pprint.pprint(collected_ids)
+    threaded_main()
