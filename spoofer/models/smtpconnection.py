@@ -41,7 +41,7 @@ class SMTPConnection:
 
     def __connect(self):
         try:
-            # cout.info('Connecting to SMTP socket (' + self.socket + ')...')
+            cout.info('Connecting to SMTP socket (' + self.socket + ')...')
             self.server = smtplib.SMTP(self.host, self.port)
         except (gaierror, OSError) as e:
             cout.error('Unable to establish connection to SMTP socket.')
@@ -56,7 +56,7 @@ class SMTPConnection:
             exit(1)
         else:
             try:
-                # cout.info('Starting TLS session...')
+                cout.info('Starting TLS session...')
                 self.server.starttls()
             except RuntimeError as e:
                 cout.error('SSL/TLS support is not available to your Python interpreter.')
@@ -149,9 +149,9 @@ class SMTPConnection:
 
     def send_mail(self, message):
         try:
-            # cout.info('Sending spoofed message...')
+            cout.info('Sending spoofed message...')
             self.server.sendmail(self.sender, self.recipients, message.as_string())
-            # cout.success('Message sent!')
+            cout.success('Message sent!')
         except smtplib.SMTPException as e:
             cout.error('Unable to send message. Check sender, recipients and message body')
             cout.error(':Error Cause:')
