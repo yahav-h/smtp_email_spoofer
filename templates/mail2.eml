@@ -1,0 +1,26 @@
+
+To: {{to}}
+Subject: {{subject}}
+Disposition-Notification-To: yahav.hoffmann@gmail.com
+Message-ID: {{msgid}}
+Mime-Version: 1.0
+Content-Type: multipart/mixed; boundary="19032019ABCDE"
+
+--19032019ABCDE
+Content-Type: text/plain; charset="UTF-8" 
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline 
+
+Hello {{to}},
+We're watching you and monitoring all your activities!
+You're computer has being compromised, we gain access and control over your data and network traffic.
+
+
+--19032019ABCDE
+Content-Type: application;
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="image_loader"
+
+*base64 string goes here (no asterix)*
+
+--19032019ABCDE--

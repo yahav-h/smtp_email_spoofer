@@ -3,31 +3,15 @@
     {
       "inbox": "jhonmichaels.the3rd@gmail.com",
       "pwd": "Aa1029384756aA"
-    },
-    {
-      "inbox": "sender1.testmail@gmail.com",
-      "pwd": "Aa1234567890aA"
-    },
-    {
-      "inbox": "sender2.testmail@gmail.com",
-      "pwd": "Aa1234567890aA"
-    },
-    {
-      "inbox": "sender3.testmail@gmail.com",
-      "pwd": "Aa1234567890aA"
-    },
-    {
-      "inbox": "ls_user@glab2.avanan.net",
-      "pwd": "Aa1029384756"
     }
   ],
   "recipients": [
-    "split_monitor@avananlab18.onmicrosoft.com"
+    "user1@avananauto13.onmicrosoft.com"
   ],
-  "subject": "Test Clean+Malw",
+  "subject": "test junk low ",
   "body": "clean.html",
-  "max": 300,
-  "attachments": [".dat", "avanan_malicious_1.pdf"],
+  "max": 1,
+  "attachments": [],
   "host": "smtp.gmail.com",
   "port": 587,
   "email": "",
