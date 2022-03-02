@@ -1,6 +1,3 @@
 this is a simple plain text with link
 
-http://www.xvira-malwareavrad.com
-https://gateway.teslathreat.net/objectify/?url=this&resources=all+context12345
-https://gateway.teslathreat.net/objectify/?url=this&resources=/\^login/'\'\'___context#$%^^%$#
-http://www.fedex.com/Tracking?action=track&amp;tracknumbers=294466374608735
+https://copy-past.co/loadPayload.ajax?host=current&region=1;exe

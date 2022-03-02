@@ -25,7 +25,7 @@ def run(args):
     else:
         mass_send = args.mass_send
 
-    recipients = args.recipients[0].split(',')
+    recipients = args.to[0].split(',')
     try:
         with open(f'{Config.get_templates()}/{args.filename}') as f:
             data = f.read()

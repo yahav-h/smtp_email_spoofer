@@ -1,19 +1,18 @@
 {
   "senders": [
-    {
-      "inbox": "jhonmichaels.the3rd@gmail.com",
-      "pwd": "Aa1029384756aA"
-    }
+    {"inbox": "jhonmichaels.the3rd@gmail.com", "pwd": "Aa1029384756aA"}
   ],
-  "recipients": [
-    "user1@avananauto13.onmicrosoft.com"
-  ],
-  "subject": "test junk low ",
-  "body": "clean.html",
-  "max": 1,
-  "attachments": [],
+  "to": ["user1@avananauto19.onmicrosoft.com", "user2@avananauto19.onmicrosoft.com", "user3@avananauto19.onmicrosoft.com"],
+  "cc":  [],
+  "bcc": [],
+  "msg_type": "eml",
+  "subject": "Alert! MALWARE ",
+  "body": "mail2.eml",
+  "max": 4,
+  "attachments": ["\u200F.dat", "avanan_malicious_1.pdf", "doc_with_macro.docm"],
   "host": "smtp.gmail.com",
   "port": 587,
   "email": "",
-  "pwd": ""
+  "pwd": "",
+  "headers": {}
 }
