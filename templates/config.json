@@ -1,17 +1,18 @@
 {
   "senders": [
-    {"inbox": "jhonmichaels.the3rd@gmail.com", "pwd": "Aa1029384756aA"}
+    {"inbox": "user1@avananlab18.onmicrosoft.com", "pwd": "AvananO365_!@#"}
   ],
-  "to": ["user1@avananauto19.onmicrosoft.com", "user2@avananauto19.onmicrosoft.com", "user3@avananauto19.onmicrosoft.com"],
+  "to": ["avanan_inline_incoming@avananauto22.onmicrosoft.com"],
   "cc":  [],
-  "bcc": [],
-  "msg_type": "eml",
-  "subject": "Alert! MALWARE ",
-  "body": "mail2.eml",
-  "max": 4,
-  "attachments": ["\u200F.dat", "avanan_malicious_1.pdf", "doc_with_macro.docm"],
-  "host": "smtp.gmail.com",
+  "bcc": [""],
+  "msg_type": "html",
+  "subject": "AV-52985 ",
+  "body": "phish_gif.html",
+  "max": 1,
+  "attachments": [],
+  "host": "smtp.office365.com",
   "port": 587,
+  "tls": true,
   "email": "",
   "pwd": "",
   "headers": {}

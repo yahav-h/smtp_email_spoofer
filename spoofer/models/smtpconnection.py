@@ -13,7 +13,7 @@ from ..utils.lambdas import getUUID
 
 
 class SMTPConnection:
-    def __init__(self, host, port):
+    def __init__(self, host, port, tls=False):
         self.host = host
         self.port = port
         self.socket = str(host) + ':' + str(port)
@@ -26,8 +26,9 @@ class SMTPConnection:
         self.username = None
 
         self.__connect()
-        self.__start_tls()
-        self.__eval_server_features()
+        if tls:
+            self.__start_tls()
+            self.__eval_server_features()
 
     def __ehlo(self):
         try:

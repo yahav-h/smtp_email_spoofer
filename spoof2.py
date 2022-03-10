@@ -51,8 +51,9 @@ def threaded_main():
                     html = html.replace('{{userName}}', ', '.join(data.to[0]))
             subjects = []
             while counter < data.max:
-                conn = SMTPConnection(data.host, data.port)
-                conn.login(sender.email, sender.pwd)
+                conn = SMTPConnection(data.host, data.port, data.tls)
+                if data.tls:
+                    conn.login(sender.email, sender.pwd)
                 msg = conn.compose_message(
                     sender=sender.email,
                     name=sender.email.split('@')[0],
