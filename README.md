@@ -206,7 +206,9 @@ Let's walk through the `config.json` file :
  }
 ```
 ---
-
++ `"email"` key should kept as `null` 
++ `"pwd"` key should kept as `null`
+---
 Now , 
 
 simply fill the relevant metadata by which you 
