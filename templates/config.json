@@ -1,16 +1,16 @@
 {
   "senders": [
-    {"inbox": "user1@avananlab18.onmicrosoft.com", "pwd": "AvananO365_!@#"}
+    {"inbox": "jhonmichaels.the3rd@gmail.com", "pwd": "Aa1029384756aA"}
   ],
-  "to": ["avanan_inline_incoming@avananauto22.onmicrosoft.com"],
+  "to": ["yahavh@avanan.com"],
   "cc":  [],
-  "bcc": [""],
+  "bcc": [],
   "msg_type": "html",
-  "subject": "AV-52985 ",
-  "body": "phish_gif.html",
+  "subject": "TEST NEW CTP ",
+  "body": "clicktime_template.html",
   "max": 1,
   "attachments": [],
-  "host": "smtp.office365.com",
+  "host": "smtp.gmail.com",
   "port": 587,
   "tls": true,
   "email": "",
