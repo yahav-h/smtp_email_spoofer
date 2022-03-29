@@ -1,13 +1,13 @@
 {
   "senders": [
-    {"inbox": "jhonmichaels.the3rd@gmail.com", "pwd": "Aa1029384756aA"}
+    {"inbox": "", "pwd": ""}
   ],
-  "to": ["yahavh@avanan.com"],
+  "to": [],
   "cc":  [],
   "bcc": [],
   "msg_type": "html",
-  "subject": "TEST NEW CTP ",
-  "body": "clicktime_template.html",
+  "subject": "",
+  "body": "",
   "max": 1,
   "attachments": [],
   "host": "smtp.gmail.com",
@@ -16,7 +16,7 @@
   "add_msgid_to_subject": false,
   "message_charset": "utf-7",
   "multipart_type": "alternative",
-  "email": "",
-  "pwd": "",
-  "headers": {}
+  "headers": {},
+  "email": null,
+  "pwd": null
 }
