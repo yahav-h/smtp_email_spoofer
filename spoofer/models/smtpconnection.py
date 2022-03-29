@@ -101,30 +101,40 @@ class SMTPConnection:
             cout.error(f'{e.with_traceback(e.__traceback__)}')
             exit(1)
 
-    def compose_message(self, sender, name, to, cc, bcc, subject, html, headers, attachments, withUUID, type='html'):
+    def compose_message(
+            self, sender, name, to, cc, bcc, subject,
+            html, headers, attachments,
+            multipart_type='alternative',
+            message_charset='utf-8',
+            withUUID=False,
+            msg_type='html'
+    ):
         self.sender = sender
         self.to = to
         self.cc = cc
         self.bcc = bcc
-        # print("List : %s" % self.recipients)
         self.attachments = attachments
         assert isinstance(self.to, list)
         assert isinstance(self.cc, list)
         assert isinstance(self.bcc, list)
         assert isinstance(self.attachments, list)
         uuid = getUUID()
-        message = MIMEMultipart('alternative')
-        message.set_charset("utf-8")
+        datenow = datetime.datetime.now().isoformat()
+        timestamp = time.time().__str__()
+        if withUUID:
+            subject = '%s:%s:%s' % (subject, datenow, uuid.hex)
+        message = MIMEMultipart(multipart_type)
+        message.set_charset(message_charset)
         message['From'] = f'{name} <{self.sender}>'
-        message['Subject'] = f"{uuid.hex} - {subject}" if withUUID else f"{subject}"
+        message['Subject'] = subject
         message['Date'] = formatdate(localtime=True, usegmt=True, timeval=0.750)
         recipientsTo = ','.join(self.to)
         message['To'] = recipientsTo
         recipientsCc = ','.join(self.cc)
         message['Cc'] = recipientsCc
         message['Message-ID'] = uuid.hex
-        message['timestamp'] = str(time.time())
-        message['Date'] = datetime.datetime.utcnow().isoformat()
+        message['timestamp'] = timestamp
+        message['Date'] = datenow
         message.add_header('Reply-To', self.sender)
 
         if not headers:
@@ -133,7 +143,7 @@ class SMTPConnection:
             for key, value in headers.items():
                 message.add_header(_name=key, _value=value)
 
-        body = MIMEText(html, type)
+        body = MIMEText(html, msg_type)
         message.attach(body)
         if None in self.attachments:
             pass

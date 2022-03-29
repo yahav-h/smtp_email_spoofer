@@ -13,6 +13,9 @@
   "host": "smtp.gmail.com",
   "port": 587,
   "tls": true,
+  "add_msgid_to_subject": false,
+  "message_charset": "utf-7",
+  "multipart_type": "alternative",
   "email": "",
   "pwd": "",
   "headers": {}

@@ -64,13 +64,11 @@ def threaded_main():
                     html=html,
                     headers=data.headers,
                     attachments=data.attachments,
-                    withUUID=0,
-                    type=data.msg_type
+                    withUUID=data.add_msgid_to_subject,
+                    msg_type=data.msg_type
                 )
                 hex_id = msg['Message-ID']
-                suffix = str(datetime.datetime.now().isoformat()) + " " + str(hex_id)
-                msg['Subject'] += suffix
-                subjects.append(msg['Subject'] + suffix)
+                subjects.append(msg['Subject'])
                 conn.send_mail(msg)
                 cout.success(f'Sender {sender.email} sent message {hex_id} to {", ".join(data.to)}')
                 conn.quit()
