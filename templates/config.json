@@ -1,19 +1,19 @@
 {
   "senders": [
-    {
-      "inbox": "jhonmichaels.the3rd@gmail.com",
-      "pwd": "Aa1029384756aA"
-    }
+    {"inbox": "jhonmichaels.the3rd@gmail.com", "pwd": "Aa1029384756aA"}
   ],
-  "recipients": [
-    "user1@avananauto13.onmicrosoft.com"
-  ],
-  "subject": "test junk low ",
-  "body": "clean.html",
+  "to": ["yahavh@avanan.com"],
+  "cc":  [],
+  "bcc": [],
+  "msg_type": "html",
+  "subject": "TEST NEW CTP ",
+  "body": "clicktime_template.html",
   "max": 1,
   "attachments": [],
   "host": "smtp.gmail.com",
   "port": 587,
+  "tls": true,
   "email": "",
-  "pwd": ""
+  "pwd": "",
+  "headers": {}
 }

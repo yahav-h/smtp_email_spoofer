@@ -1,7 +1,6 @@
 From: Spector <sp3c7o2@mal2tor.onion>
 To: {{to}}
 Subject: {{subject}}
-Disposition-Notification-To: recipient01@email.co.za
 Message-ID: {{msgid}}
 Mime-Version: 1.0
 Content-Type: multipart/mixed; boundary="19032019ABCDE"
@@ -12,28 +11,9 @@ Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline 
 
 
-=22
-
-	=22
-	=22
-
-
-
-, 
-you will find this gift very nice!
-if you don=E2=80=99t ordered this gift, 
-then return to alias@mail2tor.onion
-
-	=22
-	=22
-
-=22
 
 --19032019ABCDE
 Content-Type: application;
 Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="image_loader"
-
-*base64 string goes here (no asterix)*
 
 --19032019ABCDE--

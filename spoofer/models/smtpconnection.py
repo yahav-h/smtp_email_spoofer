@@ -13,19 +13,22 @@ from ..utils.lambdas import getUUID
 
 
 class SMTPConnection:
-    def __init__(self, host, port):
+    def __init__(self, host, port, tls=False):
         self.host = host
         self.port = port
         self.socket = str(host) + ':' + str(port)
         self.server = None
         self.sender = None
-        self.recipients = None
+        self.to = None
+        self.cc = None
+        self.bcc = None
         self.attachments = None
         self.username = None
 
         self.__connect()
-        self.__start_tls()
-        self.__eval_server_features()
+        if tls:
+            self.__start_tls()
+            self.__eval_server_features()
 
     def __ehlo(self):
         try:
@@ -98,25 +101,27 @@ class SMTPConnection:
             cout.error(f'{e.with_traceback(e.__traceback__)}')
             exit(1)
 
-    def compose_message(self, sender, name, recipients, subject, html, headers, attachments, withUUID, isCC):
+    def compose_message(self, sender, name, to, cc, bcc, subject, html, headers, attachments, withUUID, type='html'):
         self.sender = sender
-        self.recipients = recipients
+        self.to = to
+        self.cc = cc
+        self.bcc = bcc
         # print("List : %s" % self.recipients)
         self.attachments = attachments
-        assert isinstance(self.recipients, list)
+        assert isinstance(self.to, list)
+        assert isinstance(self.cc, list)
+        assert isinstance(self.bcc, list)
         assert isinstance(self.attachments, list)
         uuid = getUUID()
         message = MIMEMultipart('alternative')
         message.set_charset("utf-8")
         message['From'] = f'{name} <{self.sender}>'
         message['Subject'] = f"{uuid.hex} - {subject}" if withUUID else f"{subject}"
-        # message['Date'] = formatdate(localtime=True, usegmt=True, timeval=0.750)
-        if len(self.recipients) > 1 and isCC:
-            one, *n = self.recipients
-            message['To'] = one
-            message['Cc'] = ', '.join(n)
-        else:
-            message['To'] = ', '.join(self.recipients)
+        message['Date'] = formatdate(localtime=True, usegmt=True, timeval=0.750)
+        recipientsTo = ','.join(self.to)
+        message['To'] = recipientsTo
+        recipientsCc = ','.join(self.cc)
+        message['Cc'] = recipientsCc
         message['Message-ID'] = uuid.hex
         message['timestamp'] = str(time.time())
         message['Date'] = datetime.datetime.utcnow().isoformat()
@@ -125,15 +130,10 @@ class SMTPConnection:
         if not headers:
             pass
         else:
-            headers_list = headers.replace("{", "").replace("}", "").replace('"', "").split(":")
-            key, value = None, None
-            for i in range(0, len(headers_list)):
-                key = headers_list[i]
-                value = headers_list[i]
-                break
-            message.add_header(_name=key, _value=value)
+            for key, value in headers.items():
+                message.add_header(_name=key, _value=value)
 
-        body = MIMEText(html, 'html')
+        body = MIMEText(html, type)
         message.attach(body)
         if None in self.attachments:
             pass
@@ -150,7 +150,7 @@ class SMTPConnection:
     def send_mail(self, message):
         try:
             cout.info('Sending spoofed message...')
-            self.server.sendmail(self.sender, self.recipients, message.as_string())
+            self.server.sendmail(self.sender, self.to + self.cc + self.bcc, message.as_string())
             cout.success('Message sent!')
         except smtplib.SMTPException as e:
             cout.error('Unable to send message. Check sender, recipients and message body')

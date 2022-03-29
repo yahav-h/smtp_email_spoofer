@@ -47,28 +47,32 @@ def threaded_main():
             counter = 0
             with open(f'{Config.get_templates()}/{data.body}', 'r') as fin:
                 html = fin.read()
-                html = html.replace('{{userName}}', ', '.join(data.recipients))
+                if html.__contains__('{{userName}}'):
+                    html = html.replace('{{userName}}', ', '.join(data.to[0]))
             subjects = []
             while counter < data.max:
-                conn = SMTPConnection(data.host, data.port)
-                conn.login(sender.email, sender.pwd)
+                conn = SMTPConnection(data.host, data.port, data.tls)
+                if data.tls:
+                    conn.login(sender.email, sender.pwd)
                 msg = conn.compose_message(
                     sender=sender.email,
                     name=sender.email.split('@')[0],
-                    recipients=data.recipients,
+                    to=data.to,
+                    cc=data.cc,
+                    bcc=data.bcc,
                     subject=data.subject,
                     html=html,
-                    headers='',
+                    headers=data.headers,
                     attachments=data.attachments,
                     withUUID=0,
-                    isCC=0
+                    type=data.msg_type
                 )
                 hex_id = msg['Message-ID']
                 suffix = str(datetime.datetime.now().isoformat()) + " " + str(hex_id)
                 msg['Subject'] += suffix
                 subjects.append(msg['Subject'] + suffix)
                 conn.send_mail(msg)
-                cout.success(f'Sender {sender.email} sent message {hex_id} to {", ".join(data.recipients)}')
+                cout.success(f'Sender {sender.email} sent message {hex_id} to {", ".join(data.to)}')
                 conn.quit()
                 collected_ids.append(hex_id)
                 counter += 1
