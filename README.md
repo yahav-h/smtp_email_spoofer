@@ -16,10 +16,23 @@ Python 3.x based email spoofer
 
 ## <a id="getting-started">Getting Started</a>
 
-1. `$ git clone https://github.com/yahav-h/smtp_email_spoofer.git`
-3. Activate `virtualenv`
-2. `$ pip install -r requirements.txt`
-3. `$ python spoof.py`
+1. Clone repository
+```shell
+$ git clone https://github.com/yahav-h/smtp_email_spoofer.git
+```
+2. Create and Activate `virtualenv`
+```shell
+$ python3 -m venv ./venv
+$ source venv/bin/activate
+```
+3. Install program dependencies
+```shell
+$ ./venv/bin/python3 -m pip install -r ./requirements.txt
+```
+5. Run script
+```shell
+`$ python3 spoof.py`
+```
 
 ## <a id="commands">Commands</a>
 
