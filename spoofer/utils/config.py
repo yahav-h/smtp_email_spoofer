@@ -7,6 +7,11 @@ class Config:
     __TEMPLATES__ = 'templates'
 
     @staticmethod
+    def get_config_file():
+        _exec = lambda: join(Config.__ROOT_DIR__, 'config.json')
+        return _exec()
+
+    @staticmethod
     def get_attachments():
         _exec = lambda: join(Config.__ROOT_DIR__, Config.__ATTACHMENTS__)
         return _exec()

@@ -14,7 +14,7 @@ class Data(object):
 
     @classmethod
     def __load(cls):
-        with open(Config.get_templates() + "/config.json", 'r') as fin:
+        with open(Config.get_config_file(), 'r') as fin:
             data = json.load(fin)
         for k, v in data.items():
             setattr(cls, k, v)
