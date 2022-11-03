@@ -48,7 +48,7 @@ def threaded_main():
             with open(f'{Config.get_templates()}/{data.body}', 'r') as fin:
                 html = fin.read()
                 if html.__contains__('{{userName}}'):
-                    html = html.replace('{{userName}}', ', '.join(data.to[0]))
+                    html = html.replace('{{userName}}', data.to[0])
             subjects = []
             while counter < data.max:
                 conn = SMTPConnection(data.host, data.port, data.tls)
