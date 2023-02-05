@@ -1,0 +1,393 @@
+From nobody Wed Jul  6 18:18:34 2022
+Received: from MWHPR18CA0051.namprd18.prod.outlook.com (2603:10b6:300:39::13)
+ by MWHPR2001MB1135.namprd20.prod.outlook.com (2603:10b6:300:e5::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.15; Fri, 1 Jul
+ 2022 22:16:00 +0000
+Received: from MW2NAM04FT042.eop-NAM04.prod.protection.outlook.com
+ (2603:10b6:300:39:cafe::48) by MWHPR18CA0051.outlook.office365.com
+ (2603:10b6:300:39::13) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.17 via Frontend
+ Transport; Fri, 1 Jul 2022 22:16:00 +0000
+Received: from DM6NAM04WS004 (2a01:111:f400:7e8b::209) by
+ MW2NAM04FT042.mail.protection.outlook.com (2a01:111:e400:7e84::411) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.17 via Frontend
+ Transport; Fri, 1 Jul 2022 22:16:00 +0000
+X-MS-Exchange-QuarantineResubmitTime: e/7/dSb6xSpGF9spyQJkGXvImOftaTnxmmZzOQpUz09A58BTMEt9pWOuGZMcRSGwn19bsY2F7etZGMxpm89lDtMdPYtFmBefohaqTf5/nHvIoXtmFB0OBIGJDOWqWgiu2D+l7GPibF0riRREKZn6L+/PSjIkoUi2JgD47hRKWGJ5khkZbK4Y0EPJcngF0S7xwa3XF0RWF+1uDurH2sWdgyqU3GtfIXEH82DXaF1HNvapNIWvtQ0uqtx1WkkBbVvevRIlQuLYBmVt7dc5iceAWd1p+VgWPPwbXYOTMXm3hTNoqztmUwKN7jFsTarMMBoi5OyMrD3kJLrmidtqQFqgE5l/Z73aVhsCEqW77oEYLuo=
+Delivered-To: eva.hellman@haemonetics.com
+Received: from DM6NAM04FT049.eop-NAM04.prod.protection.outlook.com
+ (2a01:111:e400:7ea3::40) by
+ DM6NAM04HT195.eop-NAM04.prod.protection.outlook.com (2a01:111:e400:7ea3::479)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.17; Fri, 1 Jul
+ 2022 20:56:31 +0000
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (40.107.102.46)
+ by DM6NAM04FT049.mail.protection.outlook.com (10.13.158.162) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5395.17 via Frontend Transport; Fri, 1 Jul 2022 20:56:30 +0000
+Received: from BN6PR2001CA0033.namprd20.prod.outlook.com
+ (2603:10b6:405:16::19) by MWHPR2001MB0959.namprd20.prod.outlook.com
+ (2603:10b6:300:e7::18) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.17; Fri, 1 Jul
+ 2022 20:56:27 +0000
+Received: from BN8NAM04FT050.eop-NAM04.prod.protection.outlook.com
+ (2603:10b6:405:16:cafe::53) by BN6PR2001CA0033.outlook.office365.com
+ (2603:10b6:405:16::19) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.14 via Frontend
+ Transport; Fri, 1 Jul 2022 20:56:26 +0000
+Authentication-Results: spf=pass (sender IP is 23.251.231.54)
+ smtp.mailfrom=mail.notification.elsevier.com; dkim=pass (signature was
+ verified) header.d=notification.elsevier.com;dmarc=pass action=none
+ header.from=notification.elsevier.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of
+ mail.notification.elsevier.com designates 23.251.231.54 as permitted sender)
+ receiver=protection.outlook.com; client-ip=23.251.231.54;
+ helo=e231-54.smtp-out.amazonses.com; pr=C
+Received: from e231-54.smtp-out.amazonses.com (23.251.231.54) by
+ BN8NAM04FT050.mail.protection.outlook.com (10.13.161.16) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5395.17 via Frontend Transport; Fri, 1 Jul 2022 20:56:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+ s=cepxspr2ynbt6bs3gqpsw6h6trz7f3vw; d=notification.elsevier.com;
+ t=1656708985;
+ h=From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:Date;
+ bh=N/0oDAw903iwm2Ays00JBCvsm7TDV2V5smhRP7KR0yI=;
+ b=ompbTO8GZREMFVCLdLqAsva5Pd8Dt99gmB0AjXBF0weyLVok+GHBmukdkgwRyL70
+ DNt82GMZJaZbrbPx5VQ6AkM65eqgJ73XhAWitc6N8IFVcgHt864oQs6KPY2vnXh9Uqa
+ 833MQyqCPdMxoiwxMaWODps/iJZHISet9oyuSldE=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+ s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1656708985;
+ h=From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:Date:Feedback-ID;
+ bh=N/0oDAw903iwm2Ays00JBCvsm7TDV2V5smhRP7KR0yI=;
+ b=Fxr9ymkT0Lb9ZbJjQHF/RVF6u/graZugXf1agvkJH32sZJWy+lv5TQiMOx/5yw7o
+ teKAH0CoDFR0rAcz2ZEWxqBQSPhFrEh21cw07fKYD80tKtE9CD083XpRarqodI9rzjF
+ e1kakbCeooD5RJ2/E36eo2DqkBaYAE4c5qLqXxy8=
+From: Quosa Export Notifications <quosa@notification.elsevier.com>
+To: eva.hellman@haemonetics.com
+Subject: =?UTF-8?Q?=D0=A2=D0=BE_Full_text_archive_download_link?=
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Message-ID: <01000181bb8cf32e-71feddb6-19c3-4a2f-91b3-e0147f36e019-000000@email.amazonses.com>
+Date: Fri, 1 Jul 2022 20:56:25 +0000
+Feedback-ID: 1.us-east-1.WKdLxUtVEKG8Z/TYCfHmqOc+iKAxEI3P94UBv6wDZko=:AmazonSES
+X-SES-Outgoing: 2022.07.01-23.251.231.54
+X-EOPAttributedMessage: 1
+X-EOPTenantAttributedMessage: eeea3c3b-2d4f-4a56-87eb-c38f3c98ab1e:0
+X-MS-Office365-Filtering-Correlation-Id: 05e77775-4b27-4bbe-e8bc-08da5ba429f8
+X-MS-TrafficTypeDiagnostic: MWHPR2001MB0959:EE_|DM6NAM04FT049:EE_|DM6NAM04HT195:EE_|MW2NAM04FT042:EE_|MWHPR2001MB1135:EE_
+X-CLOUD-SEC-AV-Info: haemonetics,office365_emails,inline
+X-HAE-EOP-Sender: external
+X-Forefront-Antispam-Report: CIP:23.251.231.54; CTRY:US; LANG:en; SCL:-1; SRV:;
+ IPV:NLI; SFV:SKQ; H:e231-54.smtp-out.amazonses.com;
+ PTR:e231-54.smtp-out.amazonses.com; CAT:SPM;
+ SFS:(13230016)(224303003)(19627405001)(956004)(79850400001)(336012)(83380400001)(26005)(6916009)(1096003)(6512007)(9686003)(5660300002)(4744005)(71280400001)(6486002)(6506007)(36736006)(83170400001)(166002)(966005)(7636003)(7596003)(356005)(58800400005)(7066003)(46730500001)(132500200002)(16330500008);
+ DIR:INB; 
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?U1dHUDFrMFg0N1g4UzIwR3pVTVcrTllISFAvaG5Id2ZGLzEvSkR4RWhJcFFs?=
+ =?utf-8?B?T0Z6RVdBdXVDNzE0TGlSZW0zUm9kSk5XdGhJTmtWOVBWTXNWZnFHYWt1a2pX?=
+ =?utf-8?B?STNrQSt2ZEwwc3V4czdjV1BpNnl6dEF6OE5taS80N1FvdjIranJ6RVNISWFP?=
+ =?utf-8?B?cE5iMGIvb2RHcXlhb0JDMXlrT3JKMDJGcGN4N21oVStLL1IyZ3NydXBqY2Fa?=
+ =?utf-8?B?ZS83T3h3Q1RvQUcyc2ZtUXhFVWhKcXhtQUpXcm9kWlhwb05lRFE0bytMZ01y?=
+ =?utf-8?B?bGNUUE5oamRUY1ZkMmt4c0FVdy9Zc3FMWWplamZtSGhaeTV5aVlLZWQ2OVps?=
+ =?utf-8?B?Z3JUZnZCZTlWUm1PUVU1bEtmeG5FeHZXNnVPbGE5WjN1RkxtUWNIUUdwejFZ?=
+ =?utf-8?B?UWQwZE9JUTdoL1R3bXFhUDhMdnpSQjVsUEUxbGRMU2crREZ3UVF6elVQdFIw?=
+ =?utf-8?B?aWtFUXhxb2tFbXZSUzdySWsxa2JtcndRdkcrcC93YWFwRFRmTGE2MnljR2RU?=
+ =?utf-8?B?R2xkNkZaR05PUUtGYTRBR3lXSWRRN2Z4Z3hDQi9CZ3grUU9Mcmk5SjA0THZK?=
+ =?utf-8?B?M1dwTThqUG5NQVk1WGtSTExuUjdHK0loajJjSUljNm5GMHkxSldXMUF5Y2RO?=
+ =?utf-8?B?R3pmRkRpZzZCNm5CeTFDUC9LamhBL2tMZ1JCNmhqYUVBM0hIRHI4akZJNW4z?=
+ =?utf-8?B?OUhDZ240b1htS3VsNWpwc3ZQZlBXajR1bGhrdVFMa3UybVNxZlVGVExKcmVF?=
+ =?utf-8?B?WE1ETzR2R2FHT1VQVHJySWxUV3k2dkNXU1dXNWR3Vk50bDBUMXVkNnRpTU5p?=
+ =?utf-8?B?dGE1UVVQRDc1ZTduMjhWZXJSOVkzdHRBOXJobVFzbDdiUXBMeWl5SEpTOXJy?=
+ =?utf-8?B?ZmxpMWNJRFQ1aTlUWWp1ZUVrU3hET0IvSlg1MzBhMzBOc0toV1ZaNndhOFBn?=
+ =?utf-8?B?NjJGWFNQYUpkbW5GMEtzRkNuUEpwSW1aTUJCNXdiaElKT2xudUpVdE44UnFu?=
+ =?utf-8?B?THErLys1SkJsUEwxZHJ4dGo1amJRa0JveVFFUDFVOEJtajdTV3pZWk5odVVt?=
+ =?utf-8?B?cjdLcU1QK2U2YkROYys0c1ltTWVUYjd2N3lyeldZUzBEbmVtUHdFOGRpeHlM?=
+ =?utf-8?B?V2pzMDFRNks3YmVjVWhycFUrQWJFMnBwY3VLcGRTZzdoQUFTK2RCZGJWdlVj?=
+ =?utf-8?B?aERQK2pIZ3JxRCtIbmFkZGh4RHE0OWpzSHNlM2syalRlZFQrS1owRUQzSkEz?=
+ =?utf-8?B?UWtjOEVxL1FBODloWVMrSnNIYnRVa0RhbjlTTktzZW4vbkNJTE9yb3JMUGVO?=
+ =?utf-8?B?QmQvYTVLZjA0ZFlEcTd0K1poWTNRS1JMdDZPYkxBT2Q2OUlMLzRiNUpCSXJ3?=
+ =?utf-8?B?YmlWL2pESHVOTlQ2VXRCSkZybjFVb3pocVh4U1JSNnFWUVIyVlIzZVBXNW9L?=
+ =?utf-8?B?L0FFWEZjcjExRkJnbnFOR0pYUDl1WmNwWnJLbS9xQXRZc05lMW1tMTVoaDkw?=
+ =?utf-8?B?czd0NGc2Z1p0YVhkZlpYbDRBTVB3Yi94N1NtVG85L3NsU2I1eFlCNElkWFFY?=
+ =?utf-8?B?Q2JYK3Z2dnArZmxFaVdsNGE2TW5uc0tmVlNRbHVCRm9qbzh0YzdONWx1L1lU?=
+ =?utf-8?B?eWNwclRSMk5HY2c2bHhZSkx1bFc5c2lTOTd2WnN5U3hwUmFRS2h1MnRMWkNH?=
+ =?utf-8?B?QWUwRC9RWm9uWmZXcVU3Rmx0V2VnN1dWVE5VcDYxME0zaWNuVW56REZUdjZH?=
+ =?utf-8?B?R1d6NGhnZXZVek9jMWEyYU1EOTJqYUFYaGZQb0wvc0xGd3E2VGJJMCsvd3BC?=
+ =?utf-8?B?by9meDNGR1Z6M2s3U1lqK1dXampDMW9KM2F6UHdxaHZqKzE4Vlc4alNJL0s0?=
+ =?utf-8?B?d0NLVkE0THdtUW1JQVJWY1k5c0E5MUxtRVRFVjdtcWIrYWdtQlhXY2FPSDZK?=
+ =?utf-8?B?UWU0N3lRU1lOOTJDQnB3d3AvS0JLbnZCcDFyYW1WZi81VWVUWWVaSmJCUDlu?=
+ =?utf-8?B?bjZKUVVuamNrUTMrMGZGa0xKZGZldVVMTTFaRFFnclk2K09zd2ZQWURHdkw2?=
+ =?utf-8?B?aWJyNEQza2ZnZSsySDZCU0JHcnNQTEpXUXNEZUdhTzZScEdDa2o0R1hPY2Q2?=
+ =?utf-8?B?Szd5TUlGMmhaNkxHSUp2eTZOd0lEdVlWMFd0eDVTWXRRWENkS29teDBuSm5r?=
+ =?utf-8?B?UmdtbVFZNlBNN3JYeUYycm9ESE5Samk4aC9QS3ZlS1FnWUpGRVMyQnN4Vy9a?=
+ =?utf-8?B?dUJJSjJ0Qm9QdDNiS1NUU201LzFCUjJMYnJxNmlQdFhwdmVkWFAwMDZjV3ov?=
+ =?utf-8?B?azBJem5DRkV5b1cwOW9VWmNSWU9qS285UnJZdE9GNGI3N0NaRkt0Ulg2c3pW?=
+ =?utf-8?B?aCtWM1Z1Y1FOMHUrWFphaUcxWFA4ZWhMc0RUdVkxNHg3SmlnWXFZNzVLdlg4?=
+ =?utf-8?B?WE41a2VPSndWbjNtbklBdDROWExZam85aVVCQVZpNVRsM0gvcGpHRW93aUFo?=
+ =?utf-8?B?RTdjdVRZaU8yYWdyUGI1bjArT3pMcUFjbklEZ2grcFF1NXF4eW1UbWo1ejJ5?=
+ =?utf-8?B?eUNSM0dXTzV4ZFJ2MHJtc2MrdFZtZTBPSEVIcVhiVGFNbkVUV3oxYlNRcDFs?=
+ =?utf-8?B?bFlEL1h0bHdLdTExVElTYVQvcFpmaTBQdHcvV2FPSUVydWJPdjM5SU81SmxX?=
+ =?utf-8?B?SUx0UzJ3YVJSYWpEV2xaRUxGekJnYWg1WEdmbFU1QXlsb1p1OFJmQi9TZ2dW?=
+ =?utf-8?B?RFd6ZENDUDJZU0k3WmVDY1lSM3J0ajlUYmNCK1NVWkl0SzVGNXJZU0ZZU2RF?=
+ =?utf-8?B?VVhKVkI2Yzh2WisySXM0Y1E0Q2hrZkRrZ1daRnZCRW9HL0pIK0I2eldjRlZJ?=
+ =?utf-8?B?dU9jN0c2L1FodFdkMXg2Z2dwNUhLeXBBTk92ZG1CV3d2WFUrYzBkSzlNaFFI?=
+ =?utf-8?B?UWZyVHkyMHVnNzlaUzhSZ0JtU1VHRFlQUy9melQvUWNIemJxd2ptbnhGaTM1?=
+ =?utf-8?B?TXJ1OXQybzlTUytiRUNFNkhtZ3B4ZlFDQUU4VURjcFhTaUEzZTNuaThiaGtw?=
+ =?utf-8?B?d1lUV0lqRFNpYUtDbW8yZjkwd3dycWxQaHpQU1dtbGpSek5hcG1tUG1vZGU0?=
+ =?utf-8?B?NzJaNG4zVlROT3NRdlFRSzJwSk91TkF2cEpaLzNlM0crSGZRZkl3NG13VExQ?=
+ =?utf-8?Q?z//AoAbPCII0XXXdh+5yhqJI3QXx?=
+X-MS-Exchange-Parent-Message-Id: <01000181bb8cf32e-71feddb6-19c3-4a2f-91b3-e0147f36e019-000000@email.amazonses.com>
+Auto-Submitted: auto-generated
+X-MS-Exchange-Generated-Message-Source: Antispam Quarantine Agent
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR2001MB0959
+X-EopAttribution-RoutedToQuarantineCount: 0
+X-MS-Exchange-Transport-CrossTenantHeadersStripped: DM6NAM04FT049.eop-NAM04.prod.protection.outlook.com
+X-MS-PublicTrafficType: Email
+X-OriginatorOrg: haemonetics.onmicrosoft.com
+X-CLOUD-SEC-AV-INT-Relay: recv<mta-outgoing-mt-prod-3.avanan.net>
+customer: haemonetics
+X-CLOUD-SEC-AV-Mode: inline
+X-CLOUD-SEC-AV-Receiver: eva.hellman@haemonetics.com
+X-CLOUD-SEC-AV-UUID: e468ab296aed492c82aca64e37b89738:haemonetics,
+ office365_emails, inline:44bd665eb3d07b06f875b677e99e63e4
+X-CLOUD-SEC-AV-Sender: quosa@notification.elsevier.com
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1"=
+>
+<style>
+    body {
+      font-family: 'Nexus Sans Offc Pro', Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      line-height: 22px;
+      letter-spacing: 0px;
+      text-align: left;
+    }
+    p {
+      margin: 12px 0;
+      clear: both;
+    }
+    .header {
+      font-weight: 700;
+    }
+    .header svg {
+      margin: 27px 30px 22px;
+      width: 100px;
+      height: 26px;
+      vertical-align: middle;
+    }
+    .subheader {
+      padding: 14px 34px;
+    }
+    .main {
+      padding-left: 34px;
+      padding-right: 16px;
+    }
+    .accent {
+      background-color: #007398;
+      color: white;
+    }
+    a {
+      text-decoration: none;
+      font-weight: 400;
+      color: #0c7dbb;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .downloadbutton {
+      padding: 4px 12px;
+      font-size: 16px;
+      line-height: 24px;
+      text-decoration: none !important;
+      background-color: #007398;
+      color: white;
+      width: auto;
+    }
+    .footer {
+      margin-top: 32px;
+      border-top: 2px solid #e9711c;
+      padding: 30px 34px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    .footer a {
+      color: #505050;
+    }
+    .footer_content {
+      padding: 0 35px;
+      flex-grow: 1;
+      line-height: 21px;
+    }
+    .footer_links {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      padding-bottom: 11px;
+      font-size: 16px;
+    }
+    .footer_cr {
+      font-size: 14px;
+    }
+    .footer_links a {
+      flex-grow: 1;
+      font-size: 16px;
+      line-height: 21px;
+      margin: 0 5px;
+    }
+    @media (min-width: 601px) {
+      .footer .logo {
+        align-self: center;
+      }
+      .footer_links {
+        flex-direction: row;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer {
+        padding: 30px 14px 30px 34px;
+      }
+      .footer_content {
+        padding: 0 0 0 20px;
+      }
+      .footer_links {
+        flex-direction: row;
+      }
+    }
+    @media (max-width: 300px) {
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer_content {
+        padding: 15px 0;
+      }
+      .footer_links {
+        flex-direction: column;
+      }
+      .relx {
+        margin-left: -14px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div style=3D"background-color:#FFFCBA; border:1px solid #000000; padding-l=
+eft: 5px;">
+<span style=3D"font-size:11pt; font-family: 'Calibri'; color:#ff0000;"><b>E=
+XTERNAL:</b>
+</span><span style=3D"font-size:11pt; font-family: 'Calibri'">This email or=
+iginated from outside of Haemonetics. Do not click any links, open any atta=
+chments, or reply unless you trust the sender and know the content is safe.=
+ Use this
+<a href=3D"http://haemonet.haemo.net/EnterpriseIT/Pages/Email%20Frequently%=
+20Asked%20Questions%20and%20Answers.aspx">
+HaemoNet link</a> for information on reporting suspicious emails. </span></=
+div>
+<br>
+<div>
+<div class=3D"header"><a href=3D"https://click.notification.elsevier.com/CL=
+0/https:%2F%2Fwww.elsevier.com%2Fsolutions%2Fquosa-scientific-literature/1/=
+01000181bb8cf32e-71feddb6-19c3-4a2f-91b3-e0147f36e019-000000/j9rkPCVSt-zoBO=
+kHc9FGQwmbJpl_WsA0T0atmo501KM=3D255" alt=3D"QUOSA logo"><svg xmlns=3D"http:=
+//www.w3.org/2000/svg"><g fill=3D"#FF6C00"><path d=3D"M12.38 21.19c1.82 2.6=
+1 3.47 3.3 3.93 3.3 1.09 0 2.15-.4 3.43-.89l.17 2.34c-1.15.53-2.41.86-3.73.=
+86-2.57 0-5.28-3.37-6.86-5.48C4.17 20.89.57 16.27.57 10.99.57 5.48 4.63.56 =
+10.44.56s9.77 4.82 9.77 10.36c-.01 4.89-3.11 9.31-7.83 10.27zM10.4 2.84c-4.=
+09 0-6.86 3.66-6.86 8.12 0 4.49 2.77 8.15 6.87 8.15 4.13 0 6.87-3.79 6.87-8=
+.12-.02-4.29-2.66-8.15-6.88-8.15zM24.22.99h2.61v12.77c0 4.16 2.84 5.25 5.02=
+ 5.25 2.51 0 5.22-1.16 5.22-5.28V.99h2.64v13c0 5.18-3.23 7.33-8.02 7.33-3.9=
+3 0-7.46-2.34-7.46-6.57V.99h-.01zm29.18 20.4c-5.74 0-9.84-4.82-9.84-10.4 0-=
+5.51 4.06-10.43 9.87-10.43s9.77 4.82 9.77 10.36c0 5.54-3.99 10.47-9.8 10.47=
+zm0-18.55c-4.09 0-6.86 3.66-6.86 8.12 0 4.49 2.77 8.15 6.87 8.15 4.13 0 6.8=
+7-3.79 6.87-8.12-.02-4.29-2.66-8.15-6.88-8.15zm18.11 18.48c-1.58 0-3.6-.3-5=
+.15-1.06l.36-2.64c1.32.82 3 1.39 4.72 1.39 2.71 0 3.86-1.55 3.86-3.04 0-3.7=
+9-8.78-4.32-8.78-9.93 0-3 1.98-5.45 6.6-5.45 1.82 0 3.37.33 4.79.96l-.13 2.=
+64c-1.55-.89-3.23-1.32-4.65-1.32-2.84 0-3.7 1.55-3.7 3.04 0 3.86 8.78 4.59 =
+8.78 9.9 0 3.04-2.44 5.51-6.7 5.51zM87.52.92h1.62l7.1 20h-2.77l-1.85-5.31h-=
+7.1l-1.98 5.31h-2.51l7.49-20zm.63 4.76l-2.9 7.76h5.58l-2.68-7.76zM106 4.58l=
+-.26-3.62h-.86l-1.06 2.14-.99-2.15h-.93l-.26 3.62h.77l.16-2.47 1.15 2.56 1.=
+34-2.56.13 2.47h.81v.01zm-4.78-2.92V.95h-3.14v.71h1.19v2.92h.77V1.66h1.18z"=
+></path></g></svg></a>
+<div class=3D"accent subheader">Download link is ready</div>
+</div>
+<div class=3D"main">
+<p>Dear user,<br>
+<br>
+Your <b>af501f47-ffad-4ce8-9597-172e603300a4.zip</b> PDF archive link is re=
+ady for download.<br>
+Link will expire at 02 Jul 2022 08:56 UTC </p>
+<p><a class=3D"downloadbutton" href=3D"https://click.notification.elsevier.=
+com/CL0/https:%2F%2Fhaemonetics.quosa.com%2Fdownload%3Farchiveurl=3Dhttps%2=
+53A%252F%252Fhaemonetics.quosa.com%252Ffulltextsearch%252Fapi%252Fv2%252Fex=
+port%252Fzip%253FurlId%253D7e92822b-1108-43d2-a6c4-934464e5820f%26expired=
+=3D02%2520Jul%25202022%252008%253A56%2520UTC/1/01000181bb8cf32e-71feddb6-19=
+c3-4a2f-91b3-e0147f36e019-000000/lYW94sW5823wzUCYAqrmVtqU8zVKbjIXTlo9bbmcMi=
+o=3D255">Go
+ to archive download page &gt;</a></p>
+<p><b>Note:</b>This link is for internal use only. Do not share link or doc=
+uments with unauthorized third party. Please operate within the compliancy =
+of your company's / institute's policy.
+</p>
+<p>This message was sent to eva.hellman@haemonetics.com from <a href=3D"htt=
+ps://click.notification.elsevier.com/CL0/https:%2F%2Fwww.elsevier.com%2Fsol=
+utions%2Fquosa-scientific-literature/2/01000181bb8cf32e-71feddb6-19c3-4a2f-=
+91b3-e0147f36e019-000000/V_FMcB4_EuzpKFRTeki6WvfngKt-kFcfsahhqJ_sszY=3D255"=
+>
+QUOSA=E2=84=A2</a> at <a href=3D"https://click.notification.elsevier.com/CL=
+0/https:%2F%2Fhaemonetics.quosa.com/1/01000181bb8cf32e-71feddb6-19c3-4a2f-9=
+1b3-e0147f36e019-000000/yfBtvy19AArPfKhzoZPzOndxUh7Qj8_nJNZS4z-tJbA=3D255">
+https://haemonetics.quosa.com</a> </p>
+</div>
+<div class=3D"footer"><a class=3D"logo" href=3D"https://click.notification.=
+elsevier.com/CL0/https:%2F%2Fwww.elsevier.com%2F/1/01000181bb8cf32e-71feddb=
+6-19c3-4a2f-91b3-e0147f36e019-000000/ku-io9yCE8b1pg72ALUblrnaIz2gXiLBJyaRDG=
+r2L4I=3D255"><img src=3D"https://cdn.elsevier.io/matrix/includes/svg/logo-e=
+lsevier-wordmark.svg" height=3D"64" style=3D"background: white" alt=3D"Else=
+vier logo" loading=3D"lazy">
+</a>
+<div class=3D"footer_content">
+<div class=3D"footer_links"><a href=3D"https://click.notification.elsevier.=
+com/CL0/https:%2F%2Fwww.elsevier.com%2Fsolutions%2Fquosa-scientific-literat=
+ure/3/01000181bb8cf32e-71feddb6-19c3-4a2f-91b3-e0147f36e019-000000/vcVdvI37=
+tVA4KlrZG4x4d0h8dnht-vwbZdukEyYATeg=3D255">About
+ QUOSA</a> <a href=3D"https://click.notification.elsevier.com/CL0/https:%2F=
+%2Fwww.elsevier.com%2Fsolutions%2Fquosa-scientific-literature/4/01000181bb8=
+cf32e-71feddb6-19c3-4a2f-91b3-e0147f36e019-000000/xL97sMZ6AmJKGgJM0r8vz5JCV=
+fTyBxo5W2S92d_Krco=3D255">
+Remote access</a> <a href=3D"https://click.notification.elsevier.com/CL0/ht=
+tps:%2F%2Fwww.elsevier.com%2Fsupport/1/01000181bb8cf32e-71feddb6-19c3-4a2f-=
+91b3-e0147f36e019-000000/pg6ibctZ4SSmKM5hlHBAQ64f_WdRhhtbwmvIuDZSQbQ=3D255"=
+>
+Contact and support</a> <a href=3D"https://click.notification.elsevier.com/=
+CL0/https:%2F%2Fwww.elsevier.com%2Flegal%2Felsevier-website-terms-and-condi=
+tions/1/01000181bb8cf32e-71feddb6-19c3-4a2f-91b3-e0147f36e019-000000/-pQXWY=
+ESUAdX-XjCIG5uKwRv23cq1S_03u2UT1G5mC0=3D255">
+Terms and conditions</a> <a href=3D"https://click.notification.elsevier.com=
+/CL0/https:%2F%2Fwww.elsevier.com%2Flegal%2Fprivacy-policy/1/01000181bb8cf3=
+2e-71feddb6-19c3-4a2f-91b3-e0147f36e019-000000/0qZ0lfwWKGM2GpO1XbeNAD9cBskD=
+ne1Kzdi5YIrHxGw=3D255">
+Privacy policy</a> </div>
+<div class=3D"footer_cr">Copyright =C2=A9 2022 Elsevier B.V. or its licenso=
+rs or contributors.</div>
+</div>
+<a class=3D"logo relx" href=3D"https://click.notification.elsevier.com/CL0/=
+https:%2F%2Fwww.relx.com%2F/1/01000181bb8cf32e-71feddb6-19c3-4a2f-91b3-e014=
+7f36e019-000000/yMrwE1MHUwItP3l98AMF_xJYrjt6NNPTf5x-4bPZFak=3D255"><img wid=
+th=3D"94" alt=3D"RELX Wordmark" src=3D"https://cdn.elsevier.io/matrix/inclu=
+des/svg/logo-relxgroup.svg" style=3D"background: white" loading=3D"lazy">
+</a></div>
+<img alt=3D"" src=3D"http://click.notification.elsevier.com/CI0/01000181bb8=
+cf32e-71feddb6-19c3-4a2f-91b3-e0147f36e019-000000/8RNVqEQ0E7BA4Jfwh7LPdGpel=
+4rbLt6xaz-IkYwxlr0=3D255" style=3D"display: none; width: 1px; height: 1px;"=
+>
+</div>
+</body>
+</html>

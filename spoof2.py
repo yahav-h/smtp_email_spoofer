@@ -1,6 +1,7 @@
 from spoofer.utils.config import Config
 from spoofer.models.smtpconnection import SMTPConnection, cout
 from concurrent.futures import ThreadPoolExecutor, FIRST_EXCEPTION, wait
+from dataclasses import dataclass, field, asdict
 import json
 import datetime
 
@@ -8,6 +9,7 @@ global collected_ids
 collected_ids = []
 
 
+@dataclass
 class Data(object):
     def __init__(self):
         self.__load()
@@ -20,17 +22,13 @@ class Data(object):
             setattr(cls, k, v)
         return cls
 
-    def __repr__(self):
-        return '<Data %r>' % self.__dict__
+    def __repr__(self): return '<Data %r>' % asdict(self)
 
 
+@dataclass
 class Sender(object):
-    email = None
-    pwd = None
-
-    def __init__(self, email, pwd):
-        self.email = email
-        self.pwd = pwd
+    email: str = field(init=True)
+    pwd: str = field(init=True)
 
 
 def threaded_main():
@@ -39,7 +37,7 @@ def threaded_main():
     all_senders = data.senders
     senders = []
     for s in all_senders:
-        senders.append(Sender(s['inbox'], s['pwd']))
+        senders.append(Sender(email=s['inbox'], pwd=s['pwd']))
 
     def thread(sender, data):
         try:
@@ -75,7 +73,7 @@ def threaded_main():
                 collected_ids.append(hex_id)
                 counter += 1
             return True, subjects
-        except:
+        except Exception as e:
             return False, None
 
     with ThreadPoolExecutor(max_workers=len(senders)) as execs:

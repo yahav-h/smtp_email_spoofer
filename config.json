@@ -1,22 +1,23 @@
 {
   "senders": [
-    {"inbox": "jhonmichaels.the3rd@gmail.com", "pwd": "Aa1029384756aA"}
+    {"inbox": "user2@avananauto29.onmicrosoft.com", "pwd": "AvananO365_!@#"},
   ],
-  "to": ["user2@avananlab18.onmicrosoft.com"],
-  "cc":  [],
-  "bcc": [],
+  "to": ["user1@avananauto39.ommicrosoft.com"],
+  "cc":  ["yahavh@avanan.com"],
+  "bcc": ["0x5C-0x200F@protonmail.com"],
   "msg_type": "html",
-  "subject": "REAL_PHISHING_PAYPAL",
-  "body": "repro_ap.html",
+  "subject": "encrypt:Inline:DLP:Outbound:multipart/alternative:dlp_ex.html:to+cc+bcc",
+  "body": "dlp_ex.html",
   "max": 1,
   "attachments": [],
-  "host": "smtp.gmail.com",
+  "host": "smtp.office365.com",
   "port": 587,
   "tls": true,
   "add_msgid_to_subject": true,
   "message_charset": "utf-8",
   "multipart_type": "alternative",
-  "headers": {},
+  "headers": {
+  },
   "email": null,
   "pwd": null
 }

