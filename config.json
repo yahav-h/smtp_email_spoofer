@@ -1,10 +1,10 @@
 {
   "senders": [
-    {"inbox": "user2@avananauto29.onmicrosoft.com", "pwd": "AvananO365_!@#"},
+    {"inbox": "....", "pwd": "...."}
   ],
-  "to": ["user1@avananauto39.ommicrosoft.com"],
-  "cc":  ["yahavh@avanan.com"],
-  "bcc": ["0x5C-0x200F@protonmail.com"],
+  "to": ["...."],
+  "cc":  ["...."],
+  "bcc": ["...."],
   "msg_type": "html",
   "subject": "encrypt:Inline:DLP:Outbound:multipart/alternative:dlp_ex.html:to+cc+bcc",
   "body": "dlp_ex.html",
