@@ -6,17 +6,17 @@
   "cc":  [],
   "bcc": [],
   "msg_type": "html",
-  "subject": "org_test_ctp_AV-63167",
-  "body": "test.html",
+  "subject": "sanity:ctp:v480:includ+av-63167",
+  "body": "sanity_ctp.html",
   "max": 1,
   "attachments": [],
   "host": "smtp.office365.com",
   "port": 587,
   "tls": true,
   "add_msgid_to_subject": true,
-  "message_charset": "utf-8",
+  "message_charset": "utf-7",
   "multipart_type": "alternative",
   "headers": {},
-  "email": "avtestlab2@hush.com",
-  "pwd": "F$(nuq2D^v"
+  "email": null,
+  "pwd": null
 }
