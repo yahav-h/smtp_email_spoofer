@@ -1,13 +1,13 @@
 {
   "senders": [
-    {"inbox": "....", "pwd": "...."}
+    {"inbox": "user1@avananlab44.onmicrosoft.com", "pwd": "AvananO365_!@#"}
   ],
-  "to": ["...."],
-  "cc":  ["...."],
-  "bcc": ["...."],
+  "to": ["user2@avananlab18.onmicrosoft.com"],
+  "cc":  [],
+  "bcc": [],
   "msg_type": "html",
-  "subject": "encrypt:Inline:DLP:Outbound:multipart/alternative:dlp_ex.html:to+cc+bcc",
-  "body": "dlp_ex.html",
+  "subject": "org_test_ctp_AV-63167",
+  "body": "test.html",
   "max": 1,
   "attachments": [],
   "host": "smtp.office365.com",
@@ -16,8 +16,7 @@
   "add_msgid_to_subject": true,
   "message_charset": "utf-8",
   "multipart_type": "alternative",
-  "headers": {
-  },
-  "email": null,
-  "pwd": null
+  "headers": {},
+  "email": "avtestlab2@hush.com",
+  "pwd": "F$(nuq2D^v"
 }

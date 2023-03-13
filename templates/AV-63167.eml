@@ -1,0 +1,483 @@
+Date: Mon, 13 Mar 2023 13:58:19 +0000
+Subject: AV-63167
+Sender: IT Training <no-reply@sharepointonline.com>
+To: user2@avavanalab18.onnicrosft.com
+Reply-To: no-reply@sharepointonline.com
+From: AVANAN TEST <no-reply@yahav-mbp.local.194.29.32.132>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html dir="ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<base href="https://jjkeller.sharepoint.com/sites/ITTraining"><style>
+<!--
+.headertop1 {
+  width: 100%;
+}
+.headercontent {
+  color: #000000;
+  font-family: verdana;
+  font-size: 16pt;
+}
+.inlineall, .inlineall div, .inlineall p {
+  display:inline-block;
+  margin-bottom:0;=20
+  margin:0;
+  padding:0px;
+}
+.inlineallEdited, .inlineallEdited div, .inlineallEdited p {
+  display:inline-block;
+  text-decoration:line-through;
+  color:#9ca3ad;=20
+  margin-bottom:0;=20
+  margin:0;
+  padding:0px;
+}
+.headercontent_new {
+  color: #000000;
+  font-family: Segoe UI Semilight,Segoe UI,Segoe UI Web Regular,Helvetica N=
+eue,BBAlpha Sans,S60 Sans,Arial,sans-serif;
+  font-size: 20px;
+}
+.headercontent em {
+  font-weight:bold;
+}
+.headercontent_new em {
+  font-weight:bold;
+}
+.subheadercontent_new {
+  color: #000000;
+  font-family: Segoe UI,Segoe UI Web Regular,Helvetica Neue,BBAlpha Sans,S6=
+0 Sans,Arial,sans-serif;
+  font-size: 14px;
+}
+.breadcrumb td {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+.breadcrumb a{
+  font-family: tahoma;
+  font-size: 8pt;
+}
+.content {
+  margin-top:6px;
+  width: 100%;
+  border-bottom:solid 1px #9ca3ad;
+}
+.toolbar {
+  border: 1px solid #e8eaec;
+  background-color: #f8f8f9;
+  padding-top:3px;
+  padding-bottom:6px;
+  padding-right:3px;
+  padding-left:3px;
+}
+.toolbarbutton a, .toolbarsep {
+  font-family: verdana;
+  font-size: .68em;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.toolbarbutton_new a{
+  font-family: Segoe UI,Segoe UI Web Regular,Helvetica Neue,BBAlpha Sans,S6=
+0 Sans,Arial,sans-serif;
+  font-size: .68em;
+  padding-left: 3px;
+  padding-right: 3px;
+  text-decoration: none;
+}
+.toolbarbutton a{
+  text-decoration: none;
+}
+.toolbarsep {
+  color:#c7cbd1;
+}
+.spacer { =20
+  height: 10px;
+  font-size: 1px;
+  line-height: 1px;
+}
+.formline,  .noheight {
+  height: 1px;
+  font-size: 1px;
+  line-height: 1px;
+}
+.formlabel, .formbody, .digestlabel, .altdigestlabel, .deletedlabel, .altde=
+letedlabel  {
+  font-family: tahoma;=20
+  font-size:8pt;=20
+  padding: 0px 7px 0px 7px;
+  vertical-align: top;
+}
+.digestlabel_new {
+  font-family: Segoe UI,Segoe UI Web Regular,Helvetica Neue,BBAlpha Sans,S6=
+0 Sans,Arial,sans-serif;=20
+  font-size:12px;
+  vertical-align: top;
+}
+.formlabel, .digestlabel, .altdigestlabel, .deletedlabel, .altdeletedlabel =
+ {
+  color: #616a76;
+  font-weight: bold;=20
+}
+.rulerow  {
+  border-bottom:solid 1px #9ca3ad;
+  height:0px;
+  font-size:1px;
+  line-height:0px;
+}
+.digestlabel a, .altdigestlabel a {
+}
+.digestlabel a:hover, .altdigestlabel a:hover {
+}
+.formbody {
+  color: #000000;
+}
+.edited{
+  text-decoration:line-through;
+  color:#9ca3ad;
+}
+.grayText{
+  color:#767676;
+}
+.descriptiontext {
+  color: #9ca3ad;
+  font-family: tahoma;=20
+  font-size: 8pt;=20
+  padding-top:5px;
+  padding-bottom:7px;
+}
+.formline {
+  border-bottom: 1px solid #D7DEAC;
+}
+.editedicon, .newicon, .deletedicon {
+  color:#000000;
+  font-family: Small Fonts,  Tahoma, Verdana, Sans Serif;=20
+  font-size: 7pt;
+  padding-top:0px;
+  padding-right:3px;
+  padding-bottom:1px;
+  padding-leftt:2px;
+  position: relative;
+  top:2px;
+  margin-right:8px;
+  margin-left:8px;
+  font-weight:normal;
+}
+.editedicon_new, .newicon_new, .deletedicon_new {
+  color:#000000;
+  font-family: Segoe UI,Segoe UI Web Regular,Helvetica Neue,BBAlpha Sans,S6=
+0 Sans,Arial,sans-serif;
+  font-size: 12px;
+  padding-top:0px;
+  padding-right:3px;
+  padding-bottom:1px;
+  padding-leftt:2px;
+  position: relative;
+  top:2px;
+  margin-right:8px;
+  margin-left:8px;
+  font-weight:normal;
+}
+.editedicon {
+  background-color:#ffffcc;
+}
+.newicon {
+  background-color:#b1faa2;
+}
+.deletedIcon {
+  background-color:#ffcccc;
+ }
+.messagespace {
+  color: #5D6437;
+  font-family: tahoma;=20
+  font-size: 8pt;=20
+  padding-top:5px;
+  padding-bottom:7px;
+}
+.editedexample {
+  background: #FFFFBF;
+  padding:1px;
+}
+.vh, .vb, .altvb, .deleted, .altdeleted{
+  font-weight: normal;
+  text-align: left;=20
+  text-decoration: none;=20
+  vertical-align: top;
+  font-size: 8pt; =20
+  font-family: tahoma, sans-serif;
+  padding-left:  5px;=20
+  padding-right: 8px;
+}
+.vb, .altvb, .deleted, .altdeleted, .digestlabel, .altdigestlabel, .formlab=
+el, .formbody {
+  border-bottom:solid 1px #e8eaec;
+  padding-top:2px;
+  padding-bottom:5px;
+}
+.vb div.nobr, .altvb div.nobr {
+  white-space:nowrap;
+}
+.vh {
+  color:#76808e;
+  font-weight:bold;
+  padding-top:7px;
+  padding-bottom:6px;
+  white-space:nowrap;
+}
+.vb, .altvb {
+  color:#616a76;
+}
+.altvb, .altdigestlabel, .altdeleted, .altdeletedlabel, .formlabel, .formbo=
+dy {
+  background: #f8f8f9;=20
+}
+.digesttext {
+  color: #000000;
+}
+.deleted, .deletedlabel, .altdeleted, .altdeletedlabel {
+  text-decoration: line-through;
+  color:#9ca3ad;
+}
+.deleted a, .altdeleted a {
+  color:#9ca3ad;
+  text-decoration:line-through;
+}
+-->
+</style>
+</head>
+<body>
+<p class="MsoNormal"><u><span style="color:yellow;background-color:blac=
+k;font-size:18;">J. J. KELLER EXTERNAL EMAIL ALERT</span></u><span style==
+"color:yellow;background-color:black;font-size:18;">&nbsp; The sender of th=
+is email is from outside J. J. Keller &amp; Associates,
+ Inc.<o:p></o:p></span></p>
+<div>
+<table class="content" cellspacing="0" cellpadding="0" style="borde=
+r-bottom:none">
+<tbody>
+<tr>
+<td colspan="5" class="rulerow" style="border-bottom:none">&nbsp;</td>
+</tr>
+<tr>
+<td class="subheadercontent_new" colspan="2" style="border-bottom:none">
+<div style="margin-bottom:20px; font-size: 16px;"><img src="cid:e6a1699=
+d-bb44-46f3-8185-b73e49b56a52">&nbsp;&nbsp;
+<a style="color: black; text-decoration: none;" href="https://checkpoin=
+t.url-protection.com/v1/url?o=https%3A//jjkeller.sharepoint.com/sites/ITT=
+raining/Lists/Announcements/DispForm.aspx%3FID%2&amp;g=MDUxZjNlNTQwYzk0=
+YWEyYg==&amp;h=ZThiYTY1MDkwNTNjZjBjMDZhN2Y2Y2Y4NGE1Y2MzM2I4YjlhMzMyNT=
+U2M2QwODg3NDIzMzZhY2Y4ZWQ4ZWEyZA==&amp;p=YzJ1Ompqa2VsbGVyOmM6bzo2N2Ey=
+NGEyNmJhNzMwMWZmMmU3Zjk1NGQ3MGI3YTQ4Yzp2MTpoOlQ=" title="Protected by C=
+heck Point: https://jjkeller.sharepoint.com/sites/ITTraining/Lists/Announce=
+ments/DispForm.aspx?ID=2">
+Second announcement</a> <span class="grayText">has been added</span></div=
+>
+</td>
+<td class="vh">&nbsp;</td>
+<td class="vh">&nbsp;</td>
+<td class="vh">&nbsp;</td>
+</tr>
+<tr>
+<td class="vb" style="border-bottom:none">
+<table>
+<tbody>
+<tr>
+<td nowrap="" class="vb" style="border-bottom:none">
+<div class="circular" style="margin-left:20px; border-radius:50%; overf=
+low:hidden; width:40px; height:40px;">
+<img src="cid:61f3e86a-8692-4184-922c-c3809620b26a" width="40" height=
+="40"></div>
+</td>
+<td class="vb" style="border-bottom:none">
+<table>
+<tbody>
+<tr>
+<td nowrap="" class="subheadercontent_new" style="border-bottom:none;=
+">
+<div class="nobr" style="display: inline; white-space: nowrap; min-widt=
+h: 3000px; overflow: hidden; padding-left: 2px;">
+Rommelfanger, Anne M</div>
+</td>
+</tr>
+<tr>
+<td nowrap="" class="subheadercontent_new" style="border-bottom:none;=
+ font-size:9px;">
+<span class="grayText" style="padding-left: 2px;">3/6/2023 8:57 AM</spa=
+n></td>
+</tr>
+<tr>
+<td>
+<table>
+<tbody>
+<tr class="digesttext">
+<td class="digestlabel_new" style="border-bottom:none; background-color=
+: #FFFFFF; padding:0px; font-weight: bold;">
+Title:</td>
+<td class="digestlabel_new" style="border-bottom:none; background-color=
+: #FFFFFF;">
+<span>Second announcement&nbsp;</span></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tbody>
+<tr class="digesttext">
+<td class="digestlabel_new" style="border-bottom:none; background-color=
+: #FFFFFF; padding:0px; font-weight: bold;">
+Expiration Date:</td>
+<td class="digestlabel_new" style="border-bottom:none; background-color=
+: #FFFFFF;">
+<span>3/10/2023&nbsp;</span></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tbody>
+<tr class="digesttext">
+<td class="digestlabel_new" style="border-bottom:none; background-color=
+: #FFFFFF; padding:0px; font-weight: bold;">
+Announcement Details:</td>
+<td class="digestlabel_new" style="border-bottom:none; background-color=
+: #FFFFFF;">
+<span>
+<div class="ExternalClass6041D795F52B4E27BC77AC90B50ACB5A">
+<div style="font-family:Calibri, Arial, Helvetica, sans-serif;font-size:1=
+1pt;color:rgb(0, 0, 0);">
+<span style="color:black;">=E2=80=8BHere is an announcement with a link.&=
+nbsp;
+<p><br>
+</p>
+<div style="margin-top:14.6667px;margin-bottom:14.6667px;"><a href="htt=
+ps://checkpoint.url-protection.com/v1/url?o=https%26%2358%3B//kline.jjkel=
+ler.com/news/20896/did-you-know-ctrl-click-or-shift-click&amp;g=OWRhMDBhN=
+DdkZDE5MDRlZg==&amp;h=NTg3ZDJhNzkyNjAzNjhjZmJhMTg1OTk2ZGY1MGUwMzEzZjI=
+3NmVkMDk4YzAwNDY5N2Y1MzQxMDRkNzcyOTMyYg==&amp;p=YzJ1Ompqa2VsbGVyOmM6b=
+zo2N2EyNGEyNmJhNzMwMWZmMmU3Zjk1NGQ3MGI3YTQ4Yzp2MTpoOlQ=" title="Protect=
+ed by Check Point: https://kline.jjkeller.com/news/20896/did-you-know-ctrl-=
+click-or-shift-click">https://kline.jjkeller.com/news/20896/did-you-know-ct=
+rl-click-or-shift-click</a>
+<p><br>
+</p>
+<br>
+</div>
+</span><a href="htt
+ ps://checkpoint.url-protection.com/v1/url?o=https%3A//jjkeller.sharepoin=
+t.com/sites/ITTraining/SitePages/Microsoft-Teams-Best-Practices.aspx&amp;g=
+=MjkyNzI1NTcyMDE2MDVlYg==&amp;h=NDc3Y2E4ZGVmMDcyNTU0MDU1ZGE0MTQzMWM=
+4M2ZkY2ZkYTBjZTA3NTQ2NjI4MTY0OGI5ZjY5ZWVlOTU1YWNjZg==&amp;p=YzJ1Ompqa=
+2VsbGVyOmM6bzo2N2EyNGEyNmJhNzMwMWZmMmU3Zjk1NGQ3MGI3YTQ4Yzp2MTpoOlQ=" titl=
+e="Protected by Check Point: /sites/ITTraining/SitePages/Microsoft-Teams-=
+Best-Practices.aspx">Microsoft
+ Teams Best Practices (sharepoint.com)</a><br>
+</div>
+</div>
+&nbsp;</span></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="toolbar" border="0" cellpadding="0" cellspacing="0" w=
+idth="100%">
+<tbody>
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="toolbarbutton_new"><a href="https://checkpoint.url-protectio=
+n.com/v1/url?o=https%3A//jjkeller.sharepoint.com/sites/ITTraining/_layout=
+s/15/MySubs.aspx&amp;g=Mjk3YTNiNzQzZmQ3NDBjNQ==&amp;h=Zjg3MTRhODY2Z=
+mM1OTliYWYxNjJhMTY3NTBmNDIxYWEwYWUwNTFiMTFlZDYzZjlkY2YzYTU4NGM0OGU4MGM5Nw=
+==&amp;p=YzJ1Ompqa2VsbGVyOmM6bzo2N2EyNGEyNmJhNzMwMWZmMmU3Zjk1NGQ3MGI3=
+YTQ4Yzp2MTpoOlQ=" title="Protected by Check Point: https://jjkeller.sha=
+repoint.com/sites/ITTraining/_layouts/15/MySubs.aspx">Modify
+ my alert settings</a></td>
+<td class="toolbarsep">|</td>
+<td class="toolbarbutton_new"><a href="https://checkpoint.url-protectio=
+n.com/v1/url?o=https%3A//jjkeller.sharepoint.com/sites/ITTraining/Lists/A=
+nnouncements&amp;g=YzBjNDVlNDQzMTBhN2Y4OA==&amp;h=MWQ2M2E1OGY5MTIxZ=
+jJmOGY0YjBiYmJmMTNkMDg1YTIwMWYwNDk5ZDU1N2U0ZGVmODY3ODIxZTQ5NjY1ZjQ2NQ===
+&amp;p=YzJ1Ompqa2VsbGVyOmM6bzo2N2EyNGEyNmJhNzMwMWZmMmU3Zjk1NGQ3MGI3YTQ4Yz=
+p2MTpoOlQ=" title="Protected by Check Point: https://jjkeller.sharepoin=
+t.com/sites/ITTraining/Lists/Announcements">View
+ Announcements</a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
+
+--=-dV2jPiEdlpcN3HSY8jyr3A==
+Content-Type: image/gif; name=e6a1699d-bb44-46f3-8185-b73e49b56a52
+Content-Transfer-Encoding: base64
+Content-Disposition: inline; filename=e6a1699d-bb44-46f3-8185-b73e49b56a52
+Content-Location: e6a1699d-bb44-46f3-8185-b73e49b56a52
+Content-Id: <e6a1699d-bb44-46f3-8185-b73e49b56a52>
+
+R0lGODlhEAAQAJEDAIGBgXJycv///////yH5BAEAAAMALAAAAAAQABAAAAIrnI95wc1qgpg0ACjp
+lDdl7XjaGIhjZZ5CiXwnu6hb+tKkDeJo6/QwBBwUAAA7
+
+--=-dV2jPiEdlpcN3HSY8jyr3A==
+Content-Type: image/png; name=61f3e86a-8692-4184-922c-c3809620b26a
+Content-Transfer-Encoding: base64
+Content-Disposition: inline; filename=61f3e86a-8692-4184-922c-c3809620b26a
+Content-Location: 61f3e86a-8692-4184-922c-c3809620b26a
+Content-Id: <61f3e86a-8692-4184-922c-c3809620b26a>
+
+iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACx
+jwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVxSURBVHhe7ZznbuQwDITv/d9m03tDGtJ7RXrv
+vRcdxqc9IDnaK8k2yb1ogPmXrGl9ay1FUf5VqVRMtJwjAGFHAMKOAIQdAQg7AhB2BCDsCEDYEYCw
+IwBhRwDCjgCEXXcAent7TX9//19Tf1NPVg+gs7PTrK6umsvLS5Om9/d3c3h4aMbHx01zczP5OVqt
+FsDAwIDZ39+3Q+yuj48Ps7W1ZVpbW8nP1WZ1APAN3tnZscMZrtfXV7OwsGAaGxvJ62ixKgB9fX3m
+7u7ODmExOj8/V/00qAEwODiYzOVl6P7+3nR1dZHXlbYKAJjv397e7HCVo5eXF9PR0UFeX9LiALq7
+u5PB4dDNzY1pamoi45CyKICGhobM9LIMIV2lYpGyKABkKRKanJwk45GwGADMx2XP+2l6enpSs2AT
+A4DFkqRWVlbIuLgtAgB5OVasksLT19LSQsbHaREA8/PzdhhkhTio+DgtAuDi4sIOgayurq7I+DjN
+DgDTz+fnpx0CeUkvztgBjI6O2lvXIemUlB0Asg9N2tzcJOPkMjuAvb09e+s6hGopFSeX2QGcnZ3Z
+W9chLMqoOLnMDgCZhyZhPULFyWV2AKhIapNkhZQdAHf100U/CsDp6am9bT2i4uQyO4Dd3V172zqE
+zSAqTi6zA1heXra3rkOYEqk4ucwOYGRkxN66DuGJpOLkMjsAbbWgubk5Mk4uswOAtVRDIfSaUjFy
+WQSA1F7wdz08PJDxcVoEgIYdMUjDtqQIAFg6HcUXoL29nYyN02IAcPNSXREQGoCpuLgtBgCWWhOg
+c1rDtx8WBYDenMfHRzssfJqenibjkbAoABhpYFld0ZSwH0HFIWVxADCOFnEIbeptbW1kDFJWAQAu
+u1cIO1+xPb2G8SSUMR1hwRUPaDgahzWK/GHGQT8NLYhpVgcAxg4VVql5nobn52dVbehpVgmgaszZ
+6+vryfztKuw5T01NqT8dWTUrABzEm5mZSVrTt7e3zeLiYnJEifrb78bUtLa2lvwfqqnorqgaZY2l
+pSXvyubExETyeTg1gwYtxIbrUH9blksHgJPumE4wJaQJQDgPTKAYmLU3jacIFVv8HfX/Rbo0AEND
+Q14b8MjROd79gG+465SGgh2ekDLT18IB4FsT2n6IG8a0RH1uXuM3AU9iSBm8CqKM+lGhAFBjQaEr
+r05OTgpdseK3oYiGMFRvsadNXSPUhQDAcVN8Q4oU2kXyFs2q6WzItz5N2M+enZ0lrxfiQgCUeeDu
+9vY2WSH7pJWYs5EV+aSvvhobGyOv7evcAJBzcwiPP9JFfPuQzuIHG5kTppfh4eEkhcRTiLIDhxBP
+ERv6uQDgB5frNQMahcwtb/qcC4D0WV8NyruxHwwA1UVNDVZSynveOBgAygJRf5QnKwoCgLQzq7Tw
+04TaFDVOLg4CoK3BVlqYikPrRkEA8MMT9VWhew9BAFAqiPqq0PPGQQDKXGHWq0LfO+ENAAuPqH+F
+dJQar1r2BoB3e0bRCilXewNAESqKFmpU1Jhl2RuAlsMVGoWCIDVmWfYGsLGxYS8X9V2oDlBjlmVv
+ACgJR9EKOXHpDUDbyzY06fj4mByzLHsD+Mn1/1oKOfTtBSCuAbKFDRpq3LLsBaCnp8deKopSyGLM
+CwD2XqOy5duT6gWAawO+nuXbz+QFAK0eUdnCNE2NXZq9AMRFWG35liO8ABwcHNjLRKXJt2HLC4DG
+971pk287pRcAiUPV9SYUK6mxS7MXgCKbXP9X+TZqOQPArn9UbfnuDTsDQCNqVG3hcAo1fml2BhBX
+wW46Ojoixy/NzgDiKthNvm9jdwYQV8Fuur6+Jscvzc4A4irYTb4vAnQGEFfBbsIhRWr8aFfMby6c
+dlNReu0sAAAAAElFTkSuQmCC
+
+--=-dV2jPiEdlpcN3HSY8jyr3A==--
